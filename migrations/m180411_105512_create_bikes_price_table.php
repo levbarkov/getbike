@@ -36,6 +36,30 @@ class m180411_105512_create_bikes_price_table extends Migration
             'bikes_price',
             'region_id'
         );
+        $this->addForeignKey(
+            'fk-region_list-condition_region',
+            'bikes_price',
+            'region_id',
+            'region_list',
+            'id',
+            'CASCADE'
+        );
+        $this->addForeignKey(
+            'fk-condition_list-bike_condition',
+            'bikes_price',
+            'condition_id',
+            'condition',
+            'id',
+            'CASCADE'
+        );
+        $this->addForeignKey(
+            'fk-bikes-bike_condition',
+            'bikes_price',
+            'bike_id',
+            'bikes',
+            'id',
+            'CASCADE'
+        );
     }
 
     /**

@@ -27,6 +27,14 @@ class m180411_105409_create_rental_table extends Migration
             'rental',
             'region_id'
         );
+        $this->addForeignKey(
+            'fk-region_list-rental_region',
+            'rental',
+            'region_id',
+            'region_list',
+            'id',
+            'CASCADE'
+        );
     }
 
     /**

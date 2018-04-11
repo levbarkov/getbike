@@ -45,6 +45,25 @@ class m180411_105551_create_zakaz_table extends Migration
             'zakaz',
             'region_id'
         );
+
+
+        $this->addForeignKey(
+            'fk-pay-zakaz',
+            'zakaz',
+            'pay_id',
+            'pay',
+            'id',
+            'CASCADE'
+        );
+
+        $this->addForeignKey(
+            'fk-region_list-zakaz_region',
+            'zakaz',
+            'region_id',
+            'region_list',
+            'id',
+            'CASCADE'
+        );
     }
 
     /**
