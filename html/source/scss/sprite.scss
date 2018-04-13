@@ -1,0 +1,178 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$datepicker-arrow-name: 'datepicker_arrow';
+$datepicker-arrow-x: 94px;
+$datepicker-arrow-y: 26px;
+$datepicker-arrow-offset-x: -94px;
+$datepicker-arrow-offset-y: -26px;
+$datepicker-arrow-width: 10px;
+$datepicker-arrow-height: 18px;
+$datepicker-arrow-total-width: 105px;
+$datepicker-arrow-total-height: 82px;
+$datepicker-arrow-image: 'sprite.png';
+$datepicker-arrow: (94px, 26px, -94px, -26px, 10px, 18px, 105px, 82px, 'sprite.png', 'datepicker_arrow', );
+$header-burger-name: 'header__burger';
+$header-burger-x: 23px;
+$header-burger-y: 64px;
+$header-burger-offset-x: -23px;
+$header-burger-offset-y: -64px;
+$header-burger-width: 22px;
+$header-burger-height: 12px;
+$header-burger-total-width: 105px;
+$header-burger-total-height: 82px;
+$header-burger-image: 'sprite.png';
+$header-burger: (23px, 64px, -23px, -64px, 22px, 12px, 105px, 82px, 'sprite.png', 'header__burger', );
+$header-social-fb-name: 'header__social__fb';
+$header-social-fb-x: 94px;
+$header-social-fb-y: 0px;
+$header-social-fb-offset-x: -94px;
+$header-social-fb-offset-y: 0px;
+$header-social-fb-width: 11px;
+$header-social-fb-height: 21px;
+$header-social-fb-total-width: 105px;
+$header-social-fb-total-height: 82px;
+$header-social-fb-image: 'sprite.png';
+$header-social-fb: (94px, 0px, -94px, 0px, 11px, 21px, 105px, 82px, 'sprite.png', 'header__social__fb', );
+$header-social-insta-name: 'header__social__insta';
+$header-social-insta-x: 0px;
+$header-social-insta-y: 64px;
+$header-social-insta-offset-x: 0px;
+$header-social-insta-offset-y: -64px;
+$header-social-insta-width: 18px;
+$header-social-insta-height: 18px;
+$header-social-insta-total-width: 105px;
+$header-social-insta-total-height: 82px;
+$header-social-insta-image: 'sprite.png';
+$header-social-insta: (0px, 64px, 0px, -64px, 18px, 18px, 105px, 82px, 'sprite.png', 'header__social__insta', );
+$header-social-tw-name: 'header__social__tw';
+$header-social-tw-x: 49px;
+$header-social-tw-y: 23px;
+$header-social-tw-offset-x: -49px;
+$header-social-tw-offset-y: -23px;
+$header-social-tw-width: 21px;
+$header-social-tw-height: 17px;
+$header-social-tw-total-width: 105px;
+$header-social-tw-total-height: 82px;
+$header-social-tw-image: 'sprite.png';
+$header-social-tw: (49px, 23px, -49px, -23px, 21px, 17px, 105px, 82px, 'sprite.png', 'header__social__tw', );
+$location-close-name: 'location_close';
+$location-close-x: 75px;
+$location-close-y: 23px;
+$location-close-offset-x: -75px;
+$location-close-offset-y: -23px;
+$location-close-width: 12px;
+$location-close-height: 12px;
+$location-close-total-width: 105px;
+$location-close-total-height: 82px;
+$location-close-image: 'sprite.png';
+$location-close: (75px, 23px, -75px, -23px, 12px, 12px, 105px, 82px, 'sprite.png', 'location_close', );
+$phone-checked-name: 'phone_checked';
+$phone-checked-x: 22px;
+$phone-checked-y: 23px;
+$phone-checked-offset-x: -22px;
+$phone-checked-offset-y: -23px;
+$phone-checked-width: 22px;
+$phone-checked-height: 22px;
+$phone-checked-total-width: 105px;
+$phone-checked-total-height: 82px;
+$phone-checked-image: 'sprite.png';
+$phone-checked: (22px, 23px, -22px, -23px, 22px, 22px, 105px, 82px, 'sprite.png', 'phone_checked', );
+$second-arrow-name: 'second__arrow';
+$second-arrow-x: 0px;
+$second-arrow-y: 0px;
+$second-arrow-offset-x: 0px;
+$second-arrow-offset-y: 0px;
+$second-arrow-width: 89px;
+$second-arrow-height: 18px;
+$second-arrow-total-width: 105px;
+$second-arrow-total-height: 82px;
+$second-arrow-image: 'sprite.png';
+$second-arrow: (0px, 0px, 0px, 0px, 89px, 18px, 105px, 82px, 'sprite.png', 'second__arrow', );
+$second-line-name: 'second__line';
+$second-line-x: 0px;
+$second-line-y: 23px;
+$second-line-offset-x: 0px;
+$second-line-offset-y: -23px;
+$second-line-width: 17px;
+$second-line-height: 36px;
+$second-line-total-width: 105px;
+$second-line-total-height: 82px;
+$second-line-image: 'sprite.png';
+$second-line: (0px, 23px, 0px, -23px, 17px, 36px, 105px, 82px, 'sprite.png', 'second__line', );
+$spritesheet-width: 105px;
+$spritesheet-height: 82px;
+$spritesheet-image: 'sprite.png';
+$spritesheet-sprites: ($datepicker-arrow, $header-burger, $header-social-fb, $header-social-insta, $header-social-tw, $location-close, $phone-checked, $second-arrow, $second-line, );
+$spritesheet: (105px, 82px, 'sprite.png', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

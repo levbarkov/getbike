@@ -1,0 +1,230 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!--&lt;!&ndash; Pixel Glass &ndash;&gt;-->
+    <!--<style>-->
+    <!--HTML {-->
+    <!--background-repeat: no-repeat;-->
+    <!--background-position:  50% 0;-->
+    <!--/* Mobile layout by default */-->
+    <!--background-image: url( "img/375.png" );-->
+    <!--}-->
+    <!--/* Tablet */-->
+    <!--@media ( min-width: 760px ) {-->
+    <!--HTML {-->
+    <!--/* Tablet layout */-->
+    <!--background-image: url( "img/760.png" );-->
+    <!--}-->
+    <!--}-->
+    <!--/* Desktop */-->
+    <!--@media ( min-width: 1020px ) {-->
+    <!--HTML {-->
+    <!--/* Desktop layout */-->
+    <!--background-image: url( "img/1020.png" );-->
+    <!--}-->
+    <!--}-->
+    <!--@media ( min-width: 1599px ) {-->
+    <!--HTML {-->
+    <!--/* Desktop layout */-->
+    <!--background-image: url( "img/1600.png" );-->
+    <!--}-->
+    <!--}-->
+    <!--</style>-->
+    <!--<link href="../node_modules/pixel-glass/styles.css" rel="stylesheet">-->
+    <!--<script src="../node_modules/pixel-glass/script.js"></script>-->
+    <!--&lt;!&ndash; // Pixel Glass &ndash;&gt;-->
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+
+<div class="admin">
+    <div class="header">
+        <div class="header__logo">
+            <div class="header__logo__menu icon icon-burger"></div>
+            <a href="#" class="header__logo__logo">getbike</a>
+        </div>
+        <div class="header__social">
+            <div class="header__social__item">
+                <a href="#"><span class=" icon icon-fb"></span></a>
+            </div>
+            <div class="header__social__item">
+                <a href="#"><span class="icon icon-tw"></span></a>
+            </div>
+            <div class="header__social__item">
+                <a href="#"><span class="icon icon-insta"></span></i></a>
+            </div>
+        </div>
+        <div class="header__nav">
+            <div class="header__nav__item">
+                <a href="">About us</a>
+            </div>
+            <div class="header__nav__item">
+                <a href="">Contact</a>
+            </div>
+            <div class="header__nav__item">
+                <a href="">Prices</a>
+            </div>
+            <div class="header__nav__item">
+                <a href="">FAQ</a>
+            </div>
+            <div class="header__nav__item">
+                <a href="">Terms</a>
+            </div>
+        </div>
+        <div class="header__auth">
+            <div class="header__auth__reg">
+                <a href="">Register</a>
+            </div>
+            <div class="header__auth__login">
+                <a href="">Log In</a>
+            </div>
+        </div>
+        <div class="admin__menu__bottom">
+            <p><i class="icon icon-person"></i>Kriss<i class="icon icon-right-arrow"></i></p>
+        </div>
+    </div>
+    <div class="admin__menu">
+        <div class="admin__menu__title">
+            <a href="#">getbike.io</a>
+        </div>
+        <div class="admin__menu__links">
+            <a href="#" class="admin__menu__links__item">Garage</a>
+            <a href="#" class="admin__menu__links__item">Accounting</a>
+        </div>
+        <div class="admin__menu__bottom">
+            <p><i class="icon icon-person"></i>Kriss<i class="icon icon-right-arrow"></i></p>
+        </div>
+    </div>
+    <div class="admin__content">
+        <div class="admin__content__top">
+            <div class="admin__content__top__title">
+                <p>Add bike</p>
+            </div>
+        </div>
+        <div class="admin__content__main admin__content__main--add-bike">
+            <div class="admin__content__main__form">
+                <form action="">
+                    <div class="admin__content__main__form__item admin__content__main__form__item--selector">
+                        <label for="model">Bike model</label>
+                        <a class="js-model-list-toggle"><span class="js-model-list-toggle-text">Choose bike model</span><i class="icon icon-right-arrow"></i></a>
+                        <ul style="display: none" class="js-model-list">
+                            <li>
+                                <input type="radio" id="1" name="model">
+                                <label for="1">Honda Scoopy 110cc</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="2" name="model">
+                                <label for="2">Honda Vario 125cc</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="3" name="model">
+                                <label for="3">Kawasaki KLX 150cc</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="4" name="model">
+                                <label for="4">Yamaha R15 150CC</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="admin__content__main__form__item">
+                        <label for="number">State number of bike</label>
+                        <input type="text" name="number" placeholder="Type your bike state number">
+                    </div>
+                    <div class="admin__content__main__form__item">
+                        <label for="year">Year of the bike</label>
+                        <input type="text" name="year" placeholder="Type your bike year of issue">
+                    </div>
+                    <div class="admin__content__main__form__item">
+                        <label for="mileage">Mileage bike</label>
+                        <input type="text" name="mileage" placeholder="Type your bike mileage">
+                    </div>
+                    <div class="admin__content__main__form__condition">
+                        <div class="admin__content__main__form__condition__title">
+                            <p>Bike condition</p>
+                        </div>
+                        <div class="admin__content__main__form__condition__list">
+                            <div class="admin__content__main__form__condition__list__item">
+                                <input type="radio" checked name="mileage" value="New bike" id="mileage1">
+                                <label for="mileage1">New bike</label>
+                            </div>
+                            <div class="admin__content__main__form__condition__list__item">
+                                <input type="radio" name="mileage" value="Low mileage" id="mileage2">
+                                <label for="mileage2">Low mileage</label>
+                            </div>
+                            <div class="admin__content__main__form__condition__list__item">
+                                <input type="radio" name="mileage" value="Big mileage" id="mileage3">
+                                <label for="mileage3">Big mileage</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="admin__content__bottom">
+            <div class="admin__content__bottom__delete">
+                <p>delete</p>
+            </div>
+            <div class="admin__content__bottom__cancel">
+                <p>cancel</p>
+            </div>
+            <div class="admin__content__bottom__add admin__content__bottom__add--save">
+                <p>Save</p><i class="icon icon-right-arrow"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="layout" style="display: none"></div>
+<div class="datepicker_bottom" style="display:none;">
+    <div class="datepicker_bottom_current">
+        <p>I need bike now</p>
+    </div>
+    <div class="datepicker_bottom_chosen">
+        <p>June 13, 2018</p>
+    </div>
+    <div class="datepicker_bottom_arrow"></div>
+</div>
+<script src="js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+<script src="js/vendor/jquery-ui.datepicker.js"></script>
+<script src="js/vendor/slick.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+
+<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+<script>
+    window.ga = function () {
+        ga.q.push(arguments)
+    };
+    ga.q = [];
+    ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto');
+    ga('send', 'pageview')
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async defer></script>
+</body>
+</html>
