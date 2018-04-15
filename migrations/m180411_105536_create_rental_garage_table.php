@@ -72,10 +72,10 @@ class m180411_105536_create_rental_garage_table extends Migration
         );
         $this->addForeignKey(
             'fk-rental-garage_rental',
-            'rental',
-            'id',
             'rental_garage',
             'rental_id',
+            'rental',
+            'id',
             'CASCADE'
         );
 
