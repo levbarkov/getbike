@@ -16,8 +16,8 @@ use Yii;
  * @property string $hash
  * @property int $region_id
  *
- * @property RentalGarage $id0
  * @property RegionList $region
+ * @property RentalGarage[] $rentalGarages
  */
 class Rental extends \yii\db\ActiveRecord
 {
@@ -38,7 +38,6 @@ class Rental extends \yii\db\ActiveRecord
             [['adress'], 'string'],
             [['radius', 'region_id'], 'integer'],
             [['phone', 'mail', 'name', 'hash'], 'string', 'max' => 255],
-            [['id'], 'exist', 'skipOnError' => true, 'targetClass' => RentalGarage::className(), 'targetAttribute' => ['id' => 'rental_id']],
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => RegionList::className(), 'targetAttribute' => ['region_id' => 'id']],
         ];
     }
@@ -63,16 +62,16 @@ class Rental extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getId0()
+    public function getRegion()
     {
-        return $this->hasOne(RentalGarage::className(), ['rental_id' => 'id']);
+        return $this->hasOne(RegionList::className(), ['id' => 'region_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getRegion()
+    public function getRentalGarages()
     {
-        return $this->hasOne(RegionList::className(), ['id' => 'region_id']);
+        return $this->hasMany(RentalGarage::className(), ['rental_id' => 'id']);
     }
 }

@@ -41,6 +41,7 @@ class RentalGarage extends \yii\db\ActiveRecord
         return [
             [['rental_id', 'bike_id', 'condition_id', 'status', 'radius', 'region_id'], 'integer'],
             [['number', 'year', 'millage'], 'string', 'max' => 255],
+            [['rental_id'], 'exist', 'skipOnError' => true, 'targetClass' => Rental::className(), 'targetAttribute' => ['rental_id' => 'id']],
             [['bike_id'], 'exist', 'skipOnError' => true, 'targetClass' => Bikes::className(), 'targetAttribute' => ['bike_id' => 'id']],
             [['condition_id'], 'exist', 'skipOnError' => true, 'targetClass' => Condition::className(), 'targetAttribute' => ['condition_id' => 'id']],
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => RegionList::className(), 'targetAttribute' => ['region_id' => 'id']],
