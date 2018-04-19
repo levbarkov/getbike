@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\FileHelper;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "bikes_price".
@@ -14,12 +16,15 @@ use Yii;
  * @property string $price
  * @property int $region_id
  *
- * @property Bikes $bikes
+ * @property Bikes $bike
  * @property Condition $condition
  * @property RegionList $region
  */
 class BikesPrice extends \yii\db\ActiveRecord
 {
+
+    public $imgFile;
+
     /**
      * @inheritdoc
      */
@@ -36,8 +41,12 @@ class BikesPrice extends \yii\db\ActiveRecord
         return [
             [['bike_id', 'condition_id', 'region_id'], 'integer'],
             [['photo', 'price'], 'string', 'max' => 255],
+            [['price'], 'required'],
+            [['bike_id'], 'exist', 'skipOnError' => true, 'targetClass' => Bikes::className(), 'targetAttribute' => ['bike_id' => 'id']],
             [['condition_id'], 'exist', 'skipOnError' => true, 'targetClass' => Condition::className(), 'targetAttribute' => ['condition_id' => 'id']],
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => RegionList::className(), 'targetAttribute' => ['region_id' => 'id']],
+            [['imgFile'], 'file', 'extensions' => 'png, jpg'],
+            [['imgFile'], 'safe'],
         ];
     }
 
@@ -59,7 +68,7 @@ class BikesPrice extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getBikes()
+    public function getBike()
     {
         return $this->hasOne(Bikes::className(), ['id' => 'bike_id']);
     }
@@ -78,5 +87,31 @@ class BikesPrice extends \yii\db\ActiveRecord
     public function getRegion()
     {
         return $this->hasOne(RegionList::className(), ['id' => 'region_id']);
+    }
+
+    public function afterSave($insert, $changedAttributes){
+        parent::afterSave($insert, $changedAttributes);
+            if($this->imgFile) {
+                if($this->photo && file_exists(Yii::getAlias('@uploadBikePhoto/').$this->photo))
+                    unlink(Yii::getAlias('@uploadBikePhoto/').$this->photo);
+                /** @var $file UploadedFile*/
+                $file = $this->imgFile;
+                $dir = Yii::getAlias('@uploadBikePhoto/');
+                if(!file_exists($dir))
+                    FileHelper::createDirectory($dir, 755, true);
+                $fileName = time(). '_' . $this->id . '.' . $file->extension;
+                $file->saveAs($dir . $fileName);
+                $this->photo = $fileName;
+                $this->updateAttributes(['photo']);
+            }
+    }
+    public function beforeDelete(){
+        if (parent::beforeDelete()) {
+            if($this->photo && file_exists(Yii::getAlias('@uploadBikePhoto/').$this->photo))
+                unlink(Yii::getAlias('@uploadBikePhoto/').$this->photo);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

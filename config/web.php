@@ -10,6 +10,8 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@uploadBikePhoto'   => '@app/web/upload/bikes',
+        '@uploadBikePhotoWeb'   => '/upload/bikes',
     ],
     'components' => [
         'request' => [
@@ -30,7 +32,9 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '/' => 'site/index'
+                '/' => 'site/index',
+                '/rental/auth/<hash:\w+>' => 'rental/rental/index',
+                '/rental/<action>' => 'rental/rental/<action>'
             ],
         ],
         'mailer' => [
@@ -58,6 +62,16 @@ $config = [
             ],
         ],
         */
+    ],
+    'modules' => [
+        'rental' => [
+            'class' => 'app\modules\rental\Module',
+            'layout' => 'main'
+        ],
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+            'layout' => 'main'
+        ],
     ],
     'params' => $params,
 ];
