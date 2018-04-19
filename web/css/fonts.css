@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "TBold";
+  font-weight: bold;
+  src: url("../fonts/T/TStarProBold.otf"); }
+
+@font-face {
+  font-family: "TMedium";
+  font-weight: bold;
+  src: url("../fonts/T/TStarProMedium.otf"); }
+
+@font-face {
+  font-family: "Icons";
+  font-weight: normal;
+  src: url("../fonts/icons/icomoon.eot"); }
+
+@font-face {
+  font-family: "TRegular";
+  font-weight: normal;
+  src: url("../fonts/T/TStarProRegular.otf"); }
