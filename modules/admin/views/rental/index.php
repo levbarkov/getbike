@@ -52,6 +52,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'radius',
             //'name',
             //'hash',
+            [
+                    'attribute' => 'hash',
+                'format' => 'raw',
+                'value' => function($model){
+                    return Html::a('Auth Link', \yii\helpers\Url::to('/rental/auth/'.$model->hash));
+                }
+            ],
             //'region_id',
 
             ['class' => 'yii\grid\ActionColumn'],

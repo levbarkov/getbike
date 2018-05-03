@@ -6,16 +6,16 @@ use yii\helpers\Html;
 ?>
     <div class="admin__content__top">
         <div class="admin__content__top__title">
-            <p>Add bike</p>
+            <p>Edit bike</p>
         </div>
     </div>
 
     <div class="admin__content__main admin__content__main--add-bike">
         <div class="admin__content__main__form">
             <form action="" id="edit_garage_form" method="post">
-                <?=Html::hiddenInput('RentalGarage[rental_id]', Yii::$app->session->get('rental_id'))?>
-                <?=Html::hiddenInput('RentalGarage[region_id]', Yii::$app->session->get('region_id'))?>
-                <?=Html::hiddenInput('RentalGarage[radius]', Yii::$app->session->get('radius'))?>
+                <?=Html::hiddenInput('RentalGarage[rental_id]', Yii::$app->user->getId())?>
+                <?=Html::hiddenInput('RentalGarage[region_id]', Yii::$app->user->getIdentity()->region_id)?>
+                <?=Html::hiddenInput('RentalGarage[radius]', Yii::$app->user->getIdentity()->radius)?>
                 <?=Html::hiddenInput('RentalGarage[status]', 1)?>
                 <div class="admin__content__main__form__item admin__content__main__form__item--selector">
                     <label for="model">Bike model</label>
