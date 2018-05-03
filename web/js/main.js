@@ -143,11 +143,12 @@ $(document).ready(function () {
     $('.js-bike-availability').on("click", function () {
         //var radio = $(this).find('[data-toggle="garage_status"]');
         var garage_id = $(this).attr('data-garage_id');
+        var elem = $(this);
         $.get('/rental/changestatus?id=' + garage_id).done(function (response) {
             response = parseInt(response);
             if (response === 1) {
-                $(this).closest("li").toggleClass("js-bike-inactive");
-                console.log('true')
+                elem.closest("li").toggleClass("js-bike-inactive");
+                console.log('true');
                 return true;
             } else {
                 console.log('false');

@@ -76,14 +76,14 @@ $auth = Yii::$app->session->get('auth');
             <div class="admin__menu__title">
                 <a href="#">getbike.io</a>
             </div>
-            <?php if ($auth === true) { ?>
+            <?php if (!Yii::$app->user->isGuest) { ?>
                 <div class="admin__menu__links">
                     <a href="/rental/" class="admin__menu__links__item">Garage</a>
                     <a href="/rental/account" class="admin__menu__links__item">Accounting</a>
                 </div>
                 <div class="admin__menu__bottom">
                     <!--            <p><i class="icon icon-person"></i>Kriss<i class="icon icon-right-arrow"></i></p>-->
-                    <p><i class="icon icon-person"></i><?= Yii::$app->session->get('name') ?></p>
+                    <p><i class="icon icon-person"></i><?= Yii::$app->user->getIdentity()->name ?></p>
                 </div>
             <?php } ?>
         </div>

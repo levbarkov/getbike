@@ -7,6 +7,7 @@ use app\models\Condition;
 use app\models\Rental;
 use app\models\RentalGarage;
 use Yii;
+use yii\base\Action;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -58,6 +59,18 @@ class RentalController extends Controller
         ];
     }
 
+
+    public function actionAuth($hash = null){
+        if(isset($hash)){
+            $user =  Rental::findByHash($hash);
+            if($user && Yii::$app->user->login($user, 3600*24*30)){
+                return $this->redirect('/rental/index');
+            }
+        }
+        Yii::$app->user->logout();
+        return $this->redirect('/rental/error');
+    }
+
     /**
      * Displays homepage.
      *
@@ -65,7 +78,7 @@ class RentalController extends Controller
      */
     public function actionIndex()
     {
-        $garage = RentalGarage::find()->where(['rental_id'=>Yii::$app->session->get('rental_id')])->all();
+        $garage = RentalGarage::find()->where(['rental_id'=>Yii::$app->user->getId()])->all();
         return $this->render('index',[
             'garage' => $garage
         ]);
@@ -77,7 +90,7 @@ class RentalController extends Controller
      */
     public function actionAccount()
     {
-        $rental = Rental::findOne(Yii::$app->session->get('rental_id'));
+        $rental = Rental::findOne(Yii::$app->user->getId());
         if(Yii::$app->request->isPost){
             $post = Yii::$app->request->post();
             if($rental->load($post) && $rental->validate() && $rental->save()){
