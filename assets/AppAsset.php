@@ -21,11 +21,24 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'https://fonts.googleapis.com/css?family=Rubik',
+        'css/jquery-ui.min.css',
+        'css/normalize.css',
+        'css/main.css',
+        'css/icons.css',
+        'css/custom.css',     
     ];
     public $js = [
+        'js/vendor/modernizr-3.5.0.min.js',
+        'js/vendor/jquery-ui.datepicker.js',
+        'js/vendor/slick.min.js',
+        'js/plugins.js',
+        'js/main.js',
+            
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
+        'yii\web\JqueryAsset',
     ];
 }

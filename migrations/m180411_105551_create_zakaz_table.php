@@ -15,6 +15,8 @@ class m180411_105551_create_zakaz_table extends Migration
         $this->createTable('zakaz', [
             'id' => $this->primaryKey(),
             'rental_id' => $this->integer(),
+            'user_name' => $this->string(),            
+            'user_email' => $this->string(),            
             'user_phone' => $this->string(),
             'garage_id' => $this->integer(),
             'date_for' => $this->date(),

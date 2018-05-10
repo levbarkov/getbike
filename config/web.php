@@ -7,6 +7,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'layout' => 'getbike',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -19,6 +20,9 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        'assetManager' => [
+            'appendTimestamp' => true,
+        ],        
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
@@ -30,7 +34,11 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '/' => 'site/index'
+                '/' => 'site/index',
+                '/about' => 'site/about',
+                '/second' => 'site/second',
+                '/third' => 'site/third',
+                '/final' => 'site/final',
             ],
         ],
         'mailer' => [
