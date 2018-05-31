@@ -66,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="content__third__right__bill__item__wrapper">
                             <p class="content__third__right__bill__item__left">Pick and drop at</p>
                             <p class="content__third__right__bill__item__center"></p>
-                            <p class="content__third__right__bill__item__right">Seminyak office</p>
+                            <p class="content__third__right__bill__item__right"><?php echo $model['name_from_map'];?></p>
                         </div>
                     </div>
                     <div class="content__third__right__bill__item">

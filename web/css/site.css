@@ -113,3 +113,6 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+ul#ui-id-1 {
+z-index: 9999;
+}

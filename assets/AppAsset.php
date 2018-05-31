@@ -21,16 +21,18 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
-        'https://fonts.googleapis.com/css?family=Rubik',
+        'https://fonts.googleapis.com/css?family=Rubik',      
         'css/jquery-ui.min.css',
         'css/normalize.css',
         'css/main.css',
         'css/icons.css',
         'css/custom.css',     
+        //'//code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css',          
     ];
     public $js = [
         'js/vendor/modernizr-3.5.0.min.js',
         'js/vendor/jquery-ui.datepicker.js',
+        //'//code.jquery.com/ui/1.12.1/jquery-ui.js',
         'js/vendor/slick.min.js',
         'js/plugins.js',
         'js/main.js',

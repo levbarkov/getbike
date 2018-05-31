@@ -39,6 +39,7 @@ $config = [
                 '/second' => 'site/second',
                 '/third' => 'site/third',
                 '/final' => 'site/final',
+                '/find' => 'site/find',
             ],
         ],
         'mailer' => [

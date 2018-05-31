@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="content__second__list__item" id="bike_<?php echo $key;?>" bike="<?php echo $key;?>" style="background-image: url('<?php echo $value['first_img']?>')">
 					<?php foreach($value as $key1=>$value1){ 
 						if (is_numeric($key1)){
-						if ($key1!=1){
+						if ($key1!=$value['first_condition']){
 							$style='style="display: none;"';
 							} else {
 								$style='';

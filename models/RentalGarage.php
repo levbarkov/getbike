@@ -40,7 +40,7 @@ class RentalGarage extends \yii\db\ActiveRecord
     {
         return [
             [['rental_id', 'bike_id', 'condition_id', 'status', 'radius', 'region_id'], 'integer'],
-            [['number', 'year', 'millage'], 'string', 'max' => 255],
+            [['number', 'year', 'millage', 'price'], 'string', 'max' => 255],
             [['bike_id'], 'exist', 'skipOnError' => true, 'targetClass' => Bikes::className(), 'targetAttribute' => ['bike_id' => 'id']],
             [['condition_id'], 'exist', 'skipOnError' => true, 'targetClass' => Condition::className(), 'targetAttribute' => ['condition_id' => 'id']],
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => RegionList::className(), 'targetAttribute' => ['region_id' => 'id']],
@@ -87,7 +87,9 @@ class RentalGarage extends \yii\db\ActiveRecord
      */
     public function getBikeprice()
     {
-        return $this->hasOne(BikesPrice::className(), ['bike_id' => 'bike_id','condition_id' => 'condition_id']);
+		//return Yii::$app->db->createCommand("SELECT id, bike_id, condition_id, photo, max(price), region_id FROM WHERE bike_id=".bike_id." AND condition_id=".condition_id)->execute();
+		//return BikesPrice::className()::find()->where(['bike_id' => 'bike_id'])->andWhere(max(['price']))->one();
+        return $this->hasMany(BikesPrice::className(), ['bike_id' => 'bike_id','condition_id' => 'condition_id']);
     }
     
     /**

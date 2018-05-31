@@ -7,6 +7,8 @@ $this->title = 'Get Bike';
             <div class="content">      
 				<form action='/second' name='go_second' id='go_second' method='post'>
 				<input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />	
+				<input type="hidden" name="location_from_map" id="location_from_map" <?php if ($location_from_map!=''){ ?> value='<?php echo $location_from_map; ?>' <?php } ?> />
+				<input type="hidden" name="name_from_map" id="name_from_map" <?php if ($name_from_map!=''){ ?> value='<?php echo $name_from_map; ?>' <?php } ?> />
                 <div class="content__first">
                     <div class="content__first__block">
                         <div class="content__first__block__title">
@@ -27,7 +29,7 @@ $this->title = 'Get Bike';
                                     <p class="content__first__block__form__date__item__title">To</p>
                                     <input id="date-to" name="date-to" <?php if ($date_to!=''){ ?> value='<?php echo $date_to; ?>' <?php } ?> type="text" class="content__first__block__form__date__item__text" required placeholder="choose date"/>
                                 </div>
-                                <a class="js-choose-location content__first__block__form__location__link content__first__block__form__location__link--choosed"><i class="icon icon-location"></i>Krasnoyarsk, Mira, 565 343</a>
+                                <a class="js-choose-location content__first__block__form__location__link content__first__block__form__location__link--choosed"><i class="icon icon-location"></i><?php if ($name_from_map!=''){ echo $name_from_map;  } else { ?>Krasnoyarsk, Mira, 565 343<?php } ?></a>
                                 <a class="js-choose-location content__first__block__form__location__link"><i class="icon icon-location"></i>choose location</a>
                                 </div>
                             </div>
@@ -59,7 +61,12 @@ $script_index = <<< JS
                    $('.date__error').text('The date of return should be after the date of the lease.');
                    $('.date__error').css({'display':'block'});               
                } else {
+               if (($('#location_from_map').val()=='') || (($('#name_from_map').val()==''))){
+                                  $('.date__error').text('Please choose location');
+                                  $('.date__error').css({'display':'block'});
+		       } else {
                $('#go_second').submit();
+		       }
 		       }
 		       }
             }
