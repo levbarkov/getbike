@@ -39,7 +39,7 @@ class Zakaz extends \yii\db\ActiveRecord
         return [
             [['rental_id', 'garage_id', 'price', 'pay_id', 'region_id'], 'integer'],
             [['date_for', 'date_to', 'curr_date'], 'safe'],
-            [['user_phone'], 'string', 'max' => 255],
+            [['user_name', 'user_email', 'user_phone'], 'string', 'max' => 255],
             [['pay_id'], 'exist', 'skipOnError' => true, 'targetClass' => Pay::className(), 'targetAttribute' => ['pay_id' => 'id']],
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => RegionList::className(), 'targetAttribute' => ['region_id' => 'id']],
         ];
@@ -53,7 +53,9 @@ class Zakaz extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'rental_id' => 'Rental ID',
-            'user_phone' => 'User Phone',
+            'user_name' => 'User Name',            
+            'user_email' => 'User E-mail',            
+            'user_phone' => 'User Phone',            
             'garage_id' => 'Garage ID',
             'date_for' => 'Date For',
             'date_to' => 'Date To',
