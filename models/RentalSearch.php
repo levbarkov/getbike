@@ -19,7 +19,7 @@ class RentalSearch extends Rental
     {
         return [
             [['id', 'radius', 'region_id'], 'integer'],
-            [['phone', 'mail', 'adress', 'name', 'hash'], 'safe'],
+            [['phone', 'mail', 'adress', 'name', 'hash', 'coord'], 'safe'],
         ];
     }
 
@@ -68,7 +68,8 @@ class RentalSearch extends Rental
             ->andFilterWhere(['like', 'mail', $this->mail])
             ->andFilterWhere(['like', 'adress', $this->adress])
             ->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'hash', $this->hash]);
+            ->andFilterWhere(['like', 'hash', $this->hash])
+            ->andFilterWhere(['like', 'hash', $this->coord]);
 
         return $dataProvider;
     }

@@ -94,6 +94,14 @@ class RentalGarage extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getBikeprice()
+    {
+        return $this->hasOne(BikesPrice::className(), ['bike_id' => 'bike_id','condition_id' => 'condition_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getRegion()
     {
         return $this->hasOne(RegionList::className(), ['id' => 'region_id']);

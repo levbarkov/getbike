@@ -15,7 +15,9 @@ class m180411_105551_create_zakaz_table extends Migration
         $this->createTable('zakaz', [
             'id' => $this->primaryKey(),
             'rental_id' => $this->integer(),
+            'user_name' => $this->string(),
             'user_phone' => $this->string(),
+            'user_email' => $this->string(),
             'garage_id' => $this->integer(),
             'date_for' => $this->date(),
             'date_to' => $this->date(),
@@ -23,6 +25,7 @@ class m180411_105551_create_zakaz_table extends Migration
             'price' => $this->integer(),
             'pay_id' => $this->integer(),
             'region_id' => $this->integer(),
+            'zakaz_info' => $this->string(),
         ]);
 
         $this->createIndex(

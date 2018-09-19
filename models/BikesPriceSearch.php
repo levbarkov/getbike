@@ -19,7 +19,7 @@ class BikesPriceSearch extends BikesPrice
     {
         return [
             [['id', 'bike_id', 'condition_id', 'region_id'], 'integer'],
-            [['photo', 'price'], 'safe'],
+            [['photo', 'price', 'pricepm'], 'safe'],
         ];
     }
 
@@ -66,7 +66,8 @@ class BikesPriceSearch extends BikesPrice
         ]);
 
         $query->andFilterWhere(['like', 'photo', $this->photo])
-            ->andFilterWhere(['like', 'price', $this->price]);
+            ->andFilterWhere(['like', 'price', $this->price])
+            ->andFilterWhere(['like', 'price', $this->pricepm]);
 
         return $dataProvider;
     }

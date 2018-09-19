@@ -17,6 +17,7 @@ use yii\base\NotSupportedException;
  * @property int $radius
  * @property string $name
  * @property string $hash
+ * @property string $coord
  * @property int $region_id
  *
  * @property RegionList $region
@@ -40,7 +41,7 @@ class Rental extends \yii\db\ActiveRecord implements IdentityInterface
         return [
             [['adress'], 'string'],
             [['radius', 'region_id'], 'integer'],
-            [['phone', 'mail', 'name', 'hash'], 'string', 'max' => 255],
+            [['phone','coord', 'mail', 'name', 'hash'], 'string', 'max' => 255],
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => RegionList::className(), 'targetAttribute' => ['region_id' => 'id']],
         ];
     }
@@ -58,6 +59,7 @@ class Rental extends \yii\db\ActiveRecord implements IdentityInterface
             'radius' => 'Radius',
             'name' => 'Name',
             'hash' => 'Hash',
+            'coord' => 'Coord',
             'region_id' => 'Region ID',
         ];
     }

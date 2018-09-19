@@ -7,15 +7,16 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'layout' => 'getbike',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
-        '@uploadBikePhoto'   => '@app/web/upload/bikes',
-        '@uploadBikePhotoWeb'   => '/upload/bikes',
+        '@npm' => '@vendor/npm-asset',
+        '@uploadBikePhoto' => '@app/web/upload/bikes',
+        '@uploadBikePhotoWeb' => '/upload/bikes',
     ],
     'components' => [
         'request' => [
-            'baseUrl'=> '',
+            'baseUrl' => '',
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'tuAuLhanidaJh8XAw_0AH-inDPcnH89Q',
         ],
@@ -33,17 +34,41 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '/' => 'site/index',
+                '/' => 'dev/index',
+/*              '/index' => 'site/index',
+                '/about' => 'site/about',
+                '/insurance' => 'site/insurance',
+                '/second' => 'site/second',
+                '/third' => 'site/third',
+                '/final' => 'site/final',
+                '/mailtest' => 'site/mailtest',
+                '/hiw' => 'dev/hiw',
+                '/delivery' => 'dev/delivery',
+                '/contacts' => 'dev/contacts',*/
+                '/admin' => 'admin/zakaz/index',
+                '/admin/<action>' => 'admin/<action>',
                 '/rental/auth/<hash:\w+>' => 'rental/rental/auth',
-                '/rental/<action>' => 'rental/rental/<action>'
+                '/rental/<action>' => 'rental/rental/<action>',
+                '/dev/<action>' => 'dev/<action>',
+                '/<action>' => 'dev/<action>'
             ],
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure a transport
-            // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'useFileTransport' => false,
+            'messageConfig' => [
+                'charset' => 'UTF-8',
+                'from' => ['info@getbike.io' => 'getbike.io'],],
+            'transport' => [
+                'class' => 'Swift_MailTransport',
+                //'host' => 'leads24.info',
+                //'username' => 'getbike@leads24.info',
+                //'password' => 'X9LG8TfqQc',
+                //'port' => '587',
+                //'encryption' => 'tls',
+                //'encryption' => 'SSL',
+
+            ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -75,7 +100,7 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        'allowedIPs' => ['127.0.0.1','109.195.115.122', '::1'],
+        'allowedIPs' => ['127.0.0.1', '109.195.115.122', '91.228.64.18', '::1'],
     ];
 
     $config['bootstrap'][] = 'gii';

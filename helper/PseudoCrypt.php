@@ -102,4 +102,71 @@ class PseudoCrypt{
         return $dec;
     }
 
+    public static function latlng2distance($lat1, $long1, $lat2, $long2)  {
+        //радиус Земли
+        $R = 6372795;
+        //перевод коордитат в радианы
+        $lat1 *= pi() / 180;
+        $lat2 *= pi() / 180;
+        $long1 *= pi() / 180;
+        $long2 *= pi() / 180;
+        //вычисление косинусов и синусов широт и разницы долгот
+        $cl1 = cos($lat1);
+        $cl2 = cos($lat2);
+        $sl1 = sin($lat1);
+        $sl2 = sin($lat2);
+        $delta = $long2 - $long1;
+        $cdelta = cos($delta);
+        $sdelta = sin($delta);
+        //вычисления длины большого круга
+        $y = sqrt(pow($cl2 * $sdelta, 2) + pow($cl1 * $sl2 - $sl1 * $cl2 * $cdelta, 2));
+        $x = $sl1 * $sl2 + $cl1 * $cl2 * $cdelta;
+        $ad = atan2($y, $x);
+        $dist = $ad * $R;
+        //расстояние между двумя координатами в метрах
+        return $dist/1000;
+    }
+
+    public static function getBikes($model){
+        foreach ($model as $key => $value) {
+            if (count($value['bikeprice']) != 0) {
+                foreach ($value as $key1 => $value1) {
+
+                    if ($key1 == 'bikeprice') {
+                        $price_arr = array();
+
+                        foreach ($value1 as $kv => $val) {
+                            $price_arr[$kv] = $val;
+                        }
+                        arsort($price_arr);
+                        reset($price_arr);
+
+                        $key_price = 0;
+                        foreach ($price_arr as $kv1 => $val1) {
+                            $key_price = $kv1;
+                            break;
+                        }
+                    }
+
+                    $bikes[$value['bike_id']][$value['condition_id']][$key1] = $value1;
+                }
+                $photos[$value['bike_id']][$value['condition_id']] = $value['bikeprice']['photo'];
+            }
+
+        }
+
+        foreach ($photos as $pk => $pv) {
+            ksort($photos[$pk]);
+            reset($photos[$pk]);
+            foreach ($photos[$pk] as $ppk => $ppv) {
+                $bikes[$pk]['first_img'] = $ppv;
+                $bikes[$pk]['first_condition'] = $ppk;
+                break;
+            }
+        }
+
+        unset($photos);
+        return $bikes;
+    }
+
 }

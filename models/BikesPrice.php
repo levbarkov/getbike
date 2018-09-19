@@ -14,6 +14,7 @@ use yii\web\UploadedFile;
  * @property int $condition_id
  * @property string $photo
  * @property string $price
+ * @property string $pricepm
  * @property int $region_id
  *
  * @property Bikes $bike
@@ -40,7 +41,7 @@ class BikesPrice extends \yii\db\ActiveRecord
     {
         return [
             [['bike_id', 'condition_id', 'region_id'], 'integer'],
-            [['photo', 'price'], 'string', 'max' => 255],
+            [['photo', 'price', 'pricepm'], 'string', 'max' => 255],
             [['price'], 'required'],
             [['bike_id'], 'exist', 'skipOnError' => true, 'targetClass' => Bikes::className(), 'targetAttribute' => ['bike_id' => 'id']],
             [['condition_id'], 'exist', 'skipOnError' => true, 'targetClass' => Condition::className(), 'targetAttribute' => ['condition_id' => 'id']],
@@ -61,6 +62,7 @@ class BikesPrice extends \yii\db\ActiveRecord
             'condition_id' => 'Condition ID',
             'photo' => 'Photo',
             'price' => 'Price',
+            'pricepm' => 'Price per month',
             'region_id' => 'Region ID',
         ];
     }

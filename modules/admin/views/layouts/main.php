@@ -38,6 +38,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Rental', 'url' => ['/admin/rental']],
+            ['label' => 'Orders', 'url' => ['/admin/zakaz']],
             ['label' => 'Rental Garages', 'url' => ['/admin/rentalgarage']],
             ['label' => 'Bikes', 'url' => ['/admin/bikes']],
             ['label' => 'Prices', 'url' => ['/admin/bikesprice']],

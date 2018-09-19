@@ -80,6 +80,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'photo',
             'price',
+            'pricepm',
             //'region_id',
             [
                 'attribute' => 'region_id',
