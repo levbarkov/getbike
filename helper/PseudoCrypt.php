@@ -32,6 +32,7 @@
  * 10 - BBE2m2 - 10
  */
 namespace app\helper;
+use yii\httpclient\Client;
 
 class PseudoCrypt{
 
@@ -167,6 +168,50 @@ class PseudoCrypt{
 
         unset($photos);
         return $bikes;
+    }
+    public static function sendtoTelegram($data){
+        $client = new Client([
+            'transport' => 'yii\httpclient\CurlTransport'
+        ]);
+
+        $t_message = "We have new order.
+
+    Customer: ".$data['o_name']."
+    Whatsapp number: ".$data['phone']."
+    <a href='https://api.whatsapp.com/send?phone=".PseudoCrypt::phoneClear($data['phone'])."'>WhatsApp:".PseudoCrypt::phoneClear($data['phone'])."</a>
+    ".$data['bike_model']."
+    ".$data['condition']."  ".$data['helmets']."
+    Dates: ".$data['date']."
+    Delivery now to: ".$data['adress']."
+    Price in agreement: ".$data['summ']." Rp
+    Your part is ".$data['price']."  Rp
+    Please keep ".$data['comission']." Rp for me, thank you";
+
+        $data = [
+            'event'=>'new_order',
+            'telegram_id' => [190756392,109733868],
+            'message' => $t_message];
+
+
+        $response = $client->createRequest()
+            ->setMethod('post')
+            ->setUrl('https://tgl.website/getbike')
+            ->setData($data)
+            ->send();
+    return true;
+    }
+    public static function phoneClear($phone){
+        $phone = str_split(preg_replace('~\D+~', '', strip_tags($phone)));
+        foreach ($phone as $k=>$v){
+            if($v == 0){
+                unset($phone[$k]);
+            }else{
+                break;
+            }
+        }
+        $phone = implode('',$phone);
+        return $phone;
+
     }
 
 }

@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
      <p class="content__second__list__item__helmets__title">Contacts</p>
     <p class="content__third__right__bill__item__description">
-        <a href="https://api.whatsapp.com/send?phone=79059766651">Click </a> to write us via WhatsApp
+        <noindex><a href="https://api.whatsapp.com/send?phone=79059766651" rel="nofollow">Click </a></noindex> to write us via WhatsApp
     </p>
     <p class="content__second__list__item__helmets__title">Delivery</p>
     <p class="content__third__right__bill__item__description">

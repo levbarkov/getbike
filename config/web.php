@@ -50,6 +50,12 @@ $config = [
                 '/rental/auth/<hash:\w+>' => 'rental/rental/auth',
                 '/rental/<action>' => 'rental/rental/<action>',
                 '/dev/<action>' => 'dev/<action>',
+                '/info/<iso:[\w\-]+>/<region:[\w\-]+>/<title:[\w\-]+>' => 'dev/article',
+                '/index' => 'dev/index',
+                '/second' => 'dev/second',
+                '/third' => 'dev/third',
+                '/final' => 'dev/final',
+                '/pg-<page:[\w\-]+>' => 'dev/pages',
                 '/<action>' => 'dev/<action>'
             ],
         ],

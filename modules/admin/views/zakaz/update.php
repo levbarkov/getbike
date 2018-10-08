@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Zakaz */
 
-$this->title = 'Update Zakaz: {nameAttribute}';
+$this->title = 'Update Zakaz: ' . $model->user_email;
 $this->params['breadcrumbs'][] = ['label' => 'Zakazs', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';

@@ -109,6 +109,29 @@ class ZakazController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function  actionChangestatus($id){
+        $model = $this->findModel($id);
+        $status_id = Yii::$app->request->post('lead_status');
+        $model->status = $status_id;
+        if($model->save()){
+            $result = ['status'=>'success','text'=>'Статус успешно изменён!'];
+        }else{
+            $result = ['status'=>'false','text'=>'Возникла проблема!'];
+        }
+        return json_encode($result);
+    }
+    public function  actionChangerental($id){
+        $model = $this->findModel($id);
+        $rental_id = Yii::$app->request->post('rental_id');
+        $model->rental_id = ($rental_id != 0) ? $rental_id : null;
+        if($model->save()){
+            $result = ['status'=>'success','text'=>'Rental change success!'];
+        }else{
+            $result = ['status'=>'false','text'=>'Error!'];
+        }
+        return json_encode($result);
+    }
+
     /**
      * Finds the Zakaz model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -124,4 +147,5 @@ class ZakazController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
 }

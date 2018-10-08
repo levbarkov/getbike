@@ -23,27 +23,45 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-
-<[
 <div class="wrap">
     <?php
     NavBar::begin([
         'brandLabel' => 'Admin panel: getbike.io',
-        'brandUrl' => '/admin/rental',
+        'brandUrl' => '/admin/zakaz',
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'navbar-inverse',
         ],
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Rental', 'url' => ['/admin/rental']],
             ['label' => 'Orders', 'url' => ['/admin/zakaz']],
-            ['label' => 'Rental Garages', 'url' => ['/admin/rentalgarage']],
-            ['label' => 'Bikes', 'url' => ['/admin/bikes']],
-            ['label' => 'Prices', 'url' => ['/admin/bikesprice']],
+            ['label' => 'Rentals', 'items' =>[
+                    ['label' => 'Rental',
+                    'url' => '/admin/rental'],
+                    ['label' => 'Rental Garages',
+                    'url' => '/admin/rentalgarage'],
+            ]],
+            ['label' => 'Bikes', 'items' => [
+                    ['label' => 'Bikes',
+                        'url' => '/admin/bikes'],
+                    ['label' => 'Prices',
+                        'url' => '/admin/bikesprice'],
+                    ['label' => 'Condition',
+                        'url' => '/admin/condition'],
+            ]],
             ['label' => 'Regions', 'url' => ['/admin/regionlist']],
-            ['label' => 'Condition', 'url' => ['/admin/condition']],
+            ['label' => 'Pages', 'url' => ['/admin/pages']],
+            ['label' => 'Article',  'items' => [
+                [
+                    'label' => 'Articles',
+                    'url' => ['/admin/article/index']
+                ],
+                [
+                    'label' => 'Country and regions',
+                    'url' => ['/admin/country/index']
+                ],
+            ]],
 
             Yii::$app->user->isGuest ? (
             ['label' => 'Login', 'url' => ['/site/login']]
@@ -62,7 +80,7 @@ AppAsset::register($this);
     NavBar::end();
     ?>
 
-    <div class="container">
+    <div class="container-fluid">
         <?= Breadcrumbs::widget([
             'homeLink' => [$this->params['showMain'] ? null : false, 'label' => 'Главная', 'url' => '/admin'],
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],

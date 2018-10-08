@@ -32,19 +32,19 @@ AppAsset::register($this);
         <![endif]-->
 
         <!-- Add your site or application content here -->
-<div class="slide_menu">
-    <div class="admin__menu__title">
-        <a href="#">getbike.io</a>
-    </div>
-    <!-- Меню -->
-    <ul>
-        <li><a href="/contacts">Contacts</a></li>
-        <li><a href="/delivery">Delivery</a></li>
-        <li><a href="/hiw">How it works</a></li>
-    </ul>
-</div>
 
 <div class="main">
+    <?=\app\widgets\Hmenu::widget()?>
+  <!--  <div class="slide_menu">
+        <div class="admin__menu__title">
+            <a href="/">getbike.io</a>
+        </div>
+        <ul>
+            <li><a href="/contacts">Contacts</a></li>
+            <li><a href="/delivery">Delivery</a></li>
+            <li><a href="/hiw">How it works</a></li>
+        </ul>
+    </div>
             <div class="header">
                 <div class="header__logo">
                     <div class="icon-menu header__logo__menu icon icon-burger"></div>
@@ -95,7 +95,7 @@ AppAsset::register($this);
                         <a href="">Log In</a>
                     </div>
                 </div>
-            </div>
+            </div>-->
          <?= $content ?>
         </div>
 <div class="layout" style="display: none"></div>

@@ -18,8 +18,10 @@
         "yiisoft/yii2": "~2.0.14",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
-        "paypal/rest-api-sdk-php": "*",
-        "davidjeddy/yii2-paypal": "*"
+        "telegram-bot/api": "2.2.10",
+        "2amigos/yii2-tinymce-widget": "1.1.2",
+        "2amigos/yii2-transliterator-helper": "1.0.0",
+        "yiisoft/yii2-httpclient": "2.0.7"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

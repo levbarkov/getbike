@@ -14,7 +14,7 @@ class Module extends \yii\base\Module
      * @inheritdoc
      */
     public $controllerNamespace = 'app\modules\admin\controllers';
-    public $defaultRoute = 'bikes';
+    public $defaultRoute = 'zakaz';
 
     /**
      * @inheritdoc

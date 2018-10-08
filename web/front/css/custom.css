@@ -1633,28 +1633,28 @@ text-overflow: clip;
                 font-size: 15px; } }
             .content__third__right__bill__item__right--total {
               font-family: "TBold"; }
-          .content__third__right__bill__item__description {
+          .content__third__right__bill__item__description, [id^="article-"] .article_content p {
             width: 100%;
             font-family: "TMedium";
             color: #393A9E;
             margin-top: 0.78vh; }
             @media only screen and (min-width: 1020px) {
-              .content__third__right__bill__item__description {
+              .content__third__right__bill__item__description, [id^="article-"] .article_content p {
                 font-size: calc(0.015 * 100vw + 0px); } }
             @media only screen and (min-width: 1400px) {
-              .content__third__right__bill__item__description {
+              .content__third__right__bill__item__description, [id^="article-"] .article_content p {
                 font-size: 20.588px; } }
             @media only screen and (max-width: 1020px) {
-              .content__third__right__bill__item__description {
+              .content__third__right__bill__item__description, [id^="article-"] .article_content p {
                 font-size: 15px; } }
             @media only screen and (min-height: 900px) {
-              .content__third__right__bill__item__description {
+              .content__third__right__bill__item__description, [id^="article-"] .article_content p {
                 margin-top: 7.02px; } }
             @media only screen and (max-height: 640px) {
-              .content__third__right__bill__item__description {
+              .content__third__right__bill__item__description, [id^="article-"] .article_content p {
                 margin-top: 4.992px; } }
             @media only screen and (min-width: 320px) and (max-width: 1019px) {
-              .content__third__right__bill__item__description {
+              .content__third__right__bill__item__description, [id^="article-"] .article_content p {
                 font-size: 13px; } }
             .content__third__right__bill__item__description span {
               font-family: "TBold"; }

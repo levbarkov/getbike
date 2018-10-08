@@ -10,13 +10,13 @@ $config = [
     'layout' => 'getbike',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
-        '@uploadBikePhoto'   => '@app/web/upload/bikes',
-        '@uploadBikePhotoWeb'   => '/upload/bikes',
+        '@npm' => '@vendor/npm-asset',
+        '@uploadBikePhoto' => '@app/web/upload/bikes',
+        '@uploadBikePhotoWeb' => '/upload/bikes',
     ],
     'components' => [
         'request' => [
-            'baseUrl'=> '',
+            'baseUrl' => '',
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'tuAuLhanidaJh8XAw_0AH-inDPcnH89Q',
         ],
@@ -34,14 +34,23 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '/' => 'site/index',
-                '/about' => 'site/about',
-                '/second' => 'site/second',
-                '/third' => 'site/third',
-                '/final' => 'site/final',
-                '/mailtest' => 'site/mailtest',
+                '/' => 'dev/index',
+                /*              '/index' => 'site/index',
+                                '/about' => 'site/about',
+                                '/insurance' => 'site/insurance',
+                                '/second' => 'site/second',
+                                '/third' => 'site/third',
+                                '/final' => 'site/final',
+                                '/mailtest' => 'site/mailtest',
+                                '/hiw' => 'dev/hiw',
+                                '/delivery' => 'dev/delivery',
+                                '/contacts' => 'dev/contacts',*/
+                '/admin' => 'admin/zakaz/index',
+                '/admin/<action>' => 'admin/<action>',
                 '/rental/auth/<hash:\w+>' => 'rental/rental/auth',
-                '/rental/<action>' => 'rental/rental/<action>'
+                '/rental/<action>' => 'rental/rental/<action>',
+                '/dev/<action>' => 'dev/<action>',
+                '/<action>' => 'dev/<action>'
             ],
         ],
         'mailer' => [
@@ -49,16 +58,12 @@ $config = [
             'useFileTransport' => false,
             'messageConfig' => [
                 'charset' => 'UTF-8',
-                'from' => ['getbike@leads24.info' => 'getbike.io'],],
+                'from' => ['info@getbike.io' => 'getbike.io'],],
             'transport' => [
-                'class' => 'Swift_SmtpTransport',
-                /*                'host' => 'ssl://smtp.yandex.com',
-                                'username' => 'info@yar-bor.ru',
-                                'password' => 'Xhomq7yr',
-                                'port' => '465',*/
-                'host' => 'leads24.info',
-                'username' => 'getbike@leads24.info',
-                'password' => 'X9LG8TfqQc',
+                'class' => 'Swift_MailTransport',
+                //'host' => 'leads24.info',
+                //'username' => 'getbike@leads24.info',
+                //'password' => 'X9LG8TfqQc',
                 //'port' => '587',
                 //'encryption' => 'tls',
                 //'encryption' => 'SSL',
@@ -75,21 +80,6 @@ $config = [
             ],
         ],
         'db' => $db,
-        'paypal'=> [
-            'class'        => 'davidjeddy\Paypal',
-            'clientId'     => 'you_client_id',
-            'clientSecret' => 'you_client_secret',
-            'isProduction' => false,
-            // These properties would be found in the Paypal sdk_config.ini
-            'config'       => [
-                'http.ConnectionTimeOut' => 30,
-                'http.Retry'             => 1,
-                'mode'                   => \davidjeddy\Paypal::MODE_SANDBOX, // development (sandbox) or production (live) mode
-                'log.LogEnabled'         => YII_DEBUG ? 1 : 0,
-                'log.FileName'           => '@runtime/logs/paypal.log',
-                'log.LogLevel'           => \davidjeddy\Paypal::LOG_LEVEL_FINE,
-            ]
-        ],
     ],
     'modules' => [
         'rental' => [
@@ -110,7 +100,7 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        'allowedIPs' => ['127.0.0.1','109.195.115.122', '91.228.64.18', '::1'],
+        'allowedIPs' => ['127.0.0.1', '109.195.115.122', '91.228.64.18', '::1'],
     ];
 
     $config['bootstrap'][] = 'gii';

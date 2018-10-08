@@ -18,8 +18,8 @@ class ZakazSearch extends Zakaz
     public function rules()
     {
         return [
-            [['id', 'rental_id', 'garage_id', 'price', 'pay_id', 'region_id'], 'integer'],
-            [['user_phone', 'zakaz_info', 'user_name', 'user_email', 'date_for', 'date_to', 'curr_date'], 'safe'],
+            [['id', 'rental_id', 'garage_id', 'price', 'pay_id', 'region_id', 'service_tax', 'status'], 'integer'],
+            [['user_phone', 'zakaz_info', 'user_name', 'user_email', 'date_for', 'date_to', 'curr_date', 'comment', 'coord'], 'safe'],
         ];
     }
 
@@ -47,6 +47,7 @@ class ZakazSearch extends Zakaz
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => ['defaultOrder'=>['id'=>SORT_DESC]]
         ]);
 
         $this->load($params);
@@ -68,13 +69,17 @@ class ZakazSearch extends Zakaz
             'price' => $this->price,
             'pay_id' => $this->pay_id,
             'region_id' => $this->region_id,
+            'status' => $this->status,
         ]);
 
         $query->andFilterWhere(['like', 'user_phone', $this->user_phone])
             ->andFilterWhere(['like', 'user_name', $this->user_name])
             ->andFilterWhere(['like', 'zakaz_info', $this->zakaz_info])
             ->andFilterWhere(['like', 'user_email', $this->user_email])
-            ->orderBy(['curr_date' => SORT_DESC]);
+            ->andFilterWhere(['like', 'service_tax', $this->service_tax])
+            ->andFilterWhere(['like', 'comment', $this->comment])
+            ->andFilterWhere(['like', 'coord', $this->coord]);
+            //->orderBy(['curr_date' => SORT_DESC]);
 
         return $dataProvider;
     }

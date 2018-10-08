@@ -18,8 +18,12 @@ use Yii;
  * @property string $curr_date
  * @property string $zakaz_info
  * @property int $price
+ * @property int $service_tax
  * @property int $pay_id
  * @property int $region_id
+ * @property int $status
+ * @property string $comment
+ * @property string $coord
  *
  * @property Pay $pay
  * @property RegionList $region
@@ -40,9 +44,10 @@ class Zakaz extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['rental_id', 'garage_id', 'price', 'pay_id', 'region_id'], 'integer'],
+            [['rental_id', 'garage_id', 'price', 'pay_id', 'region_id', 'service_tax', 'status'], 'integer'],
             [['date_for', 'date_to', 'curr_date'], 'safe'],
-            [['user_name','user_email','user_phone', 'zakaz_info'], 'string', 'max' => 255],
+            [['comment'], 'string'],
+            [['user_name','user_email','user_phone', 'zakaz_info', 'coord'], 'string', 'max' => 255],
             [['pay_id'], 'exist', 'skipOnError' => true, 'targetClass' => Pay::className(), 'targetAttribute' => ['pay_id' => 'id']],
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => RegionList::className(), 'targetAttribute' => ['region_id' => 'id']],
         ];
@@ -63,10 +68,14 @@ class Zakaz extends \yii\db\ActiveRecord
             'date_for' => 'Date For',
             'date_to' => 'Date To',
             'curr_date' => 'Curr Date',
+            'coord' => 'Coord',
             'price' => 'Price',
+            'service_tax' => 'Tax',
             'pay_id' => 'Pay ID',
             'region_id' => 'Region ID',
             'zakaz_info' => 'Order Info',
+            'status' => 'Status',
+            'comment' => 'Comment',
         ];
     }
 
