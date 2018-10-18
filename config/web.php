@@ -45,6 +45,7 @@ $config = [
                 '/hiw' => 'dev/hiw',
                 '/delivery' => 'dev/delivery',
                 '/contacts' => 'dev/contacts',*/
+                'sitemap.xml' => 'dev/sitemap',
                 '/admin' => 'admin/zakaz/index',
                 '/admin/<action>' => 'admin/<action>',
                 '/rental/auth/<hash:\w+>' => 'rental/rental/auth',
@@ -55,7 +56,7 @@ $config = [
                 '/second' => 'dev/second',
                 '/third' => 'dev/third',
                 '/final' => 'dev/final',
-                '/pg-<page:[\w\-]+>' => 'dev/pages',
+                '/page/<page:[\w\-]+>' => 'dev/pages',
                 '/<action>' => 'dev/<action>'
             ],
         ],

@@ -7,13 +7,13 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\ZakazSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Zakazs';
+$this->title = 'Orders';
 $this->params['breadcrumbs'][] = $this->title;
 global  $status_list;
 global $rental_list;
 
 $rental_list = \app\models\Rental::find()->select(['id', 'name'])->asArray()->all();
-$status_list = ['Оформлен', 'Доставлен', 'Оплачен', 'Отменён'];
+$status_list = ['Оформлен', 'Доставлен', 'Оплачен', 'Отменён', 'Передан рентальщику'];
 ?>
 <div class="zakaz-index">
 

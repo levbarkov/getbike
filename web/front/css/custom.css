@@ -872,7 +872,7 @@ input[type="button"] {
             background-size: 652.4px; } }
         @media only screen and (min-height: 900px) {
           .content__second__list__item:after {
-            background-position-y: -59.04px; } }
+            background-position-y: -45px; } }
         @media only screen and (max-height: 640px) {
           .content__second__list__item:after {
             background-position-y: -41.984px; } }
@@ -1798,6 +1798,7 @@ text-overflow: clip;
       .content__nav__back:hover {
         opacity: 0.6; }
     .content__nav__button {
+      position: relative;
       width: 16.96vw;
       height: 4.9vw;
       display: -webkit-box;

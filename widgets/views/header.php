@@ -13,7 +13,7 @@
     <!-- Меню -->
     <ul>
         <?php foreach ($links as $link){ ?>
-            <li><a href="/pg-<?=$link['alias']?>"><?=$link['title']?></a></li>
+            <li><a href="/page/<?=$link['alias']?>"><?=$link['title']?></a></li>
         <?php }?>
     </ul>
 </div>
@@ -36,7 +36,7 @@
     <div class="header__nav">
         <?php foreach ($links as $link){ ?>
             <div class="header__nav__item">
-                <a href="/pg-<?=$link['alias']?>"><?=$link['title']?></a>
+                <a href="/page/<?=$link['alias']?>"><?=$link['title']?></a>
             </div>
         <?php }?>
         <div class="header__nav__item hidden">

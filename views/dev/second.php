@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'Second step';
+$this->title = 'Second step | Choose bike rental days and your location on Bali';
 ?>
             <div class="content">
                 <p class="step_title step_font">STEP 2 OF 3</p>
@@ -46,12 +46,12 @@ $this->title = 'Second step';
                         <div class="content__nav__list__item content__nav__list__item--active"></div>
                         <div class="content__nav__list__item"></div>
                     </div>
-                    <div class="content__nav__back" onclick="back_index();">
+                    <noindex><div class="content__nav__back" onclick="back_index();">
                         <p>back</p>
                     </div>
                     <div class="content__nav__button" onclick="submit();">
                         <p>Booking<i class="icon icon-right-arrow"></i></p>
-                    </div>
+                    </div></noindex>
                 </div>
                 </form>
             </div>

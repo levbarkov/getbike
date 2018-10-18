@@ -1,4 +1,5 @@
 <?php
+
 use yii\helpers\Html;
 use app\assets\AppAsset;
 
@@ -8,117 +9,151 @@ AppAsset::register($this);
 <!doctype html>
 <html class="no-js" lang="<?= Yii::$app->language ?>">
 <head>
- <meta charset="<?= Yii::$app->charset ?>">
- <meta name="viewport" content="width=device-width, initial-scale=1">
- <?= Html::csrfMetaTags() ?>
- <title><?= Html::encode($this->title) ?></title>
- <?php $this->head() ?>
+    <meta charset="<?= Yii::$app->charset ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?= Html::csrfMetaTags() ?>
+    <title><?= Html::encode($this->title) ?></title>
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="getbike.io">
+    <meta property="og:title" content="<?= Html::encode($this->title) ?>">
+    <meta property="og:url" content="https://getbike.io/">
+    <meta property="og:locale" content="en_EN">
+    <meta property="og:image" content="https://getbike.io/upload/img/og_image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-NJ3FWQD');</script>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-NJ3FWQD');
+
+    </script>
     <!-- End Google Tag Manager -->
+    <!-- Global site tag (gtag.js) - Google Ads: 795380455 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-795380455"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'AW-795380455');
+    </script>
+    <?php $this->head() ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NJ3FWQD"
-                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NJ3FWQD"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
 <!-- End Google Tag Manager (noscript) -->
-        <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience and security.</p>
+<![endif]-->
 
-        <!-- Add your site or application content here -->
+<!-- Add your site or application content here -->
 
 <div class="main">
-    <?=\app\widgets\Hmenu::widget()?>
-  <!--  <div class="slide_menu">
-        <div class="admin__menu__title">
-            <a href="/">getbike.io</a>
-        </div>
-        <ul>
-            <li><a href="/contacts">Contacts</a></li>
-            <li><a href="/delivery">Delivery</a></li>
-            <li><a href="/hiw">How it works</a></li>
-        </ul>
-    </div>
-            <div class="header">
-                <div class="header__logo">
-                    <div class="icon-menu header__logo__menu icon icon-burger"></div>
-                    <a href="/" class="header__logo__logo">getbike</a>
-                </div>
-                <div class="header__social hidden">
-                    <div class="header__social__item">
-                        <a href="#"><span class=" icon icon-fb"></span></a>
-                    </div>
-                    <div class="header__social__item">
-                        <a href="#"><span class="icon icon-tw"></span></a>
-                    </div>
-                    <div class="header__social__item">
-                        <a href="#"><span class="icon icon-insta"></span></i></a>
-                    </div>
-                </div>
-                <div class="header__nav">
-                    <div class="header__nav__item ">
-                        <a href="/contacts">Contacts</a>
-                    </div>
-                    <div class="header__nav__item ">
-                        <a href="/delivery">Delivery</a>
-                    </div>
-                    <div class="header__nav__item ">
-                        <a href="/hiw">How it works</a>
-                    </div>
-                    <div class="header__nav__item">
-                        <a href="/about">About us</a>
-                    </div>
-                    <div class="header__nav__item hidden">
-                        <a href="">Contact</a>
-                    </div>
-                    <div class="header__nav__item hidden">
-                        <a href="">Prices</a>
-                    </div>
-                    <div class="header__nav__item hidden">
-                        <a href="">FAQ</a>
-                    </div>
-                    <div class="header__nav__item hidden">
-                        <a href="">Terms</a>
-                    </div>
-                </div>
-                <div class="header__auth hidden">
-                    <div class="header__auth__reg">
-                        <a href="">Register</a>
-                    </div>
-                    <div class="header__auth__login">
-                        <a href="">Log In</a>
-                    </div>
-                </div>
-            </div>-->
-         <?= $content ?>
-        </div>
+    <?= \app\widgets\Hmenu::widget() ?>
+    <!--  <div class="slide_menu">
+          <div class="admin__menu__title">
+              <a href="/">getbike.io</a>
+          </div>
+          <ul>
+              <li><a href="/contacts">Contacts</a></li>
+              <li><a href="/delivery">Delivery</a></li>
+              <li><a href="/hiw">How it works</a></li>
+          </ul>
+      </div>
+              <div class="header">
+                  <div class="header__logo">
+                      <div class="icon-menu header__logo__menu icon icon-burger"></div>
+                      <a href="/" class="header__logo__logo">getbike</a>
+                  </div>
+                  <div class="header__social hidden">
+                      <div class="header__social__item">
+                          <a href="#"><span class=" icon icon-fb"></span></a>
+                      </div>
+                      <div class="header__social__item">
+                          <a href="#"><span class="icon icon-tw"></span></a>
+                      </div>
+                      <div class="header__social__item">
+                          <a href="#"><span class="icon icon-insta"></span></i></a>
+                      </div>
+                  </div>
+                  <div class="header__nav">
+                      <div class="header__nav__item ">
+                          <a href="/contacts">Contacts</a>
+                      </div>
+                      <div class="header__nav__item ">
+                          <a href="/delivery">Delivery</a>
+                      </div>
+                      <div class="header__nav__item ">
+                          <a href="/hiw">How it works</a>
+                      </div>
+                      <div class="header__nav__item">
+                          <a href="/about">About us</a>
+                      </div>
+                      <div class="header__nav__item hidden">
+                          <a href="">Contact</a>
+                      </div>
+                      <div class="header__nav__item hidden">
+                          <a href="">Prices</a>
+                      </div>
+                      <div class="header__nav__item hidden">
+                          <a href="">FAQ</a>
+                      </div>
+                      <div class="header__nav__item hidden">
+                          <a href="">Terms</a>
+                      </div>
+                  </div>
+                  <div class="header__auth hidden">
+                      <div class="header__auth__reg">
+                          <a href="">Register</a>
+                      </div>
+                      <div class="header__auth__login">
+                          <a href="">Log In</a>
+                      </div>
+                  </div>
+              </div>-->
+    <?= $content ?>
+</div>
 <div class="layout" style="display: none"></div>
-<?php $this_url=Yii::$app->request->resolve(); 
-if ($this_url[0]=='site/index' OR $this_url[0] == 'dev/second'){
-?>
+<?php $this_url = Yii::$app->request->resolve();
+if ($this_url[0] == 'site/index' OR $this_url[0] == 'dev/second') {
+    ?>
 
-        <div class="location_map" style="display:none;">
-            <div class="location_map__close js-close-location"><i></i></div>
-            <div class="location_map__top">
-                <div class="location_map__top__form">
-                    <label for="address">Pickup and drop at</label>
-                    <input type="text" name="address" id="address" placeholder="Kuta, Bali">
-                </div>
-                <div class="location_map__top__buttons">
-                    <div class="location_map__top__buttons__location" onClick="curLocation();"><i class="icon icon-location"></i></div>
-                    <div class="location_map__top__buttons__submit">
-                        <p>Confirm <i class="icon-right-arrow icon"></i></p>
-                    </div>
+    <div class="location_map" style="display:none;">
+        <div class="location_map__close js-close-location"><i></i></div>
+        <div class="location_map__top">
+            <div class="location_map__top__form">
+                <label for="address">Pickup and drop at</label>
+                <input type="text" name="address" id="address" placeholder="Kuta, Bali">
+            </div>
+            <div class="location_map__top__buttons">
+                <div class="location_map__top__buttons__location" onClick="curLocation();"><i
+                            class="icon icon-location"></i></div>
+                <div class="location_map__top__buttons__submit">
+                    <p>Confirm <i class="icon-right-arrow icon"></i></p>
                 </div>
             </div>
-            <div id="map"></div>
         </div>
+        <div id="map"></div>
+    </div>
     <style>
         #type-selector {
             color: #fff;
@@ -131,12 +166,13 @@ if ($this_url[0]=='site/index' OR $this_url[0] == 'dev/second'){
             font-size: 13px;
             font-weight: 300;
         }
+
         #target {
             width: 345px;
         }
     </style>
-<?php
-$script0 = <<< JS
+    <?php
+    $script0 = <<< JS
 /*
             var marker;
             var map;
@@ -341,15 +377,15 @@ $script0 = <<< JS
       
 
 JS;
-$this->registerJs($script0, yii\web\View::POS_END);
-$this->registerJsFile('https://maps.googleapis.com/maps/api/js?key=AIzaSyCUeo6QYSENtOV7IsQKXk_9OPzZBRmTFfw&callback=initAutocomplete&libraries=places',  [
-    'position' => $this::POS_END,
-    //'async' => 'async',
-    'defer' => 'defer'
-]);
+    $this->registerJs($script0, yii\web\View::POS_END);
+    $this->registerJsFile('https://maps.googleapis.com/maps/api/js?key=AIzaSyCUeo6QYSENtOV7IsQKXk_9OPzZBRmTFfw&callback=initAutocomplete&libraries=places', [
+        'position' => $this::POS_END,
+        //'async' => 'async',
+        'defer' => 'defer'
+    ]);
 }
 
-$script = <<< JS
+/*$script = <<< JS
             window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
             ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
 JS;
@@ -358,9 +394,9 @@ $this->registerJsFile('https://www.google-analytics.com/analytics.js',  [
     'position' => $this::POS_END,
     'async' => 'async',
     'defer' => 'defer'
-]);
+]);*/
 ?>
-    <?php $this->endBody() ?>    
-    </body>
+<?php $this->endBody() ?>
+</body>
 </html>
 <?php $this->endPage() ?>

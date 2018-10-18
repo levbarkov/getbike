@@ -166,8 +166,21 @@ class PseudoCrypt{
             }
         }
 
+        foreach ($bikes as $k=>$v){
+            //$price_aaray[$k] = $bikes[$k][0]['bikeprice']['price'];
+            foreach ($v as $kk => $vv){
+                $price_aaray[$k] = $vv['bikeprice']['price'];
+                break;
+            }
+        }
+        asort($price_aaray);
+
+        foreach ($price_aaray as $key => $value){
+            $sort_bikes[$key] = $bikes[$key];
+        }
+
         unset($photos);
-        return $bikes;
+        return $sort_bikes;
     }
     public static function sendtoTelegram($data){
         $client = new Client([

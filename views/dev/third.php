@@ -3,10 +3,10 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
-$this->title = 'Third step';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Third step | Type your name, telephone number, email and press Booking';
+//$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="content">
+<noindex><div class="content">
         <div class="content__third" style="background-image: url('img/second_bg.png')">
             <div class="content__third__title">
                 <p class="step_title step_font">STEP 3 OF 3</p>
@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="content__third__left__form__item" style="margin-bottom:16px;">
                             <div class="content__third__left__form__item__phone_checked" style="display:none;"></div>
                             <label for="phone">Phone Number</label>
-                            <input type="text" name="phone" id="phone" placeholder="type your WhatsApp">
+                            <input type="text" name="phone" id="phone" placeholder="type your WhatsApp (with country code)">
                             <div class="content__third__left__form__item__code" style="display:none;">
                                 <label for="code">We sent confirmation code for you</label>
                                 <div class="content__third__left__form__item__code__send">
@@ -124,7 +124,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <p>Booking<i class="icon icon-right-arrow"></i></p>
             </div>
         </div>
-    </div>
+    </div></noindex>
 <?php
 $script_third = <<< JS
             function submit() {

@@ -190,6 +190,11 @@ class DevController extends Controller
         $session->set('location_from_map', implode('|', $u_coord));
         $session->set('name_from_map', 'Kuta, Bali');
 
+        Yii::$app->view->registerMetaTag([
+            'name' => 'description',
+            'content' => 'We help our clients rent scooters which they like. Large selection of bikes. Good price only 4$ rent per day for one scooter.'
+        ]);
+
         foreach ($rentals as $rental) {
             /* @var $rental Rental */
             $r_radius = $rental['radius'];
@@ -201,11 +206,12 @@ class DevController extends Controller
         }
         //var_dump($rent_idsp);
         if (isset($rent_idsp) && is_array($rent_idsp)) {
-            $model = RentalGarage::find()->with('condition', 'bike', 'bikeprice')->asArray()->where(['status' => 1, 'rental_id' => $rent_idsp])->all();
+            $model = RentalGarage::find()->with(['condition', 'bike', 'bikeprice'])->asArray()->where(['status' => 1, 'rental_id' => $rent_idsp])->all();
             $photos = [];
             if (!empty($model)) {
                 $bikes = PseudoCrypt::getBikes($model);
                 $session->set('bikes', $bikes);
+                Yii::trace($bikes);
                 return $this->render('index', [
                     'model' => $bikes,
                 ]);
@@ -226,6 +232,7 @@ class DevController extends Controller
      */
     public function actionSecond_()
     {
+
         $session = Yii::$app->session;
         $session->open();
         $request = Yii::$app->request;
@@ -323,7 +330,6 @@ class DevController extends Controller
             }
 
             unset($photos);
-
             $session->set('bikes', $bikes);
             if ($list == 1) {
                 return $this->render('index', [
@@ -350,6 +356,11 @@ class DevController extends Controller
     public
     function actionSecond()
     {
+        Yii::$app->view->registerMetaTag([
+            'name' => 'description',
+            'content' => 'We need this information for free delivery your bike to your point on the Bali.'
+        ]);
+
         $session = Yii::$app->session;
         $request = Yii::$app->request;
         $bikes = $session->get('bikes');
@@ -394,6 +405,11 @@ class DevController extends Controller
      */
     public function actionThird()
     {
+        Yii::$app->view->registerMetaTag([
+            'name' => 'description',
+            'content' => 'We need this information to contact you to complete your order'
+        ]);
+
         $session = Yii::$app->session;
         $request = Yii::$app->request;
         $bikes = $session->get('bikes');
@@ -600,7 +616,8 @@ class DevController extends Controller
 
         return $this->render('final', [
             'model' => strip_tags($request->post('name', '')),
-            'order' => $zakaz->id
+            'order' => $zakaz->id,
+            'price' => $zakaz->price
         ]);
     }
 
@@ -754,6 +771,40 @@ class DevController extends Controller
             throw new HttpException(404 ,'Article not found');
 
         }
+    }
+
+    public function actionSitemap(){
+        Yii::$app->response->format = Response::FORMAT_XML;
+        $host = Yii::$app->request->hostInfo;
+        $url_list = Pages::find()->all();
+        $article_list = Article::find()->all();
+
+
+        echo '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL;
+        echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+        echo '<url>
+                <loc>' . $host . '/</loc>
+                <changefreq>daily</changefreq>
+                <priority>0.5</priority>
+            </url>';
+        foreach ($url_list as $url){
+            echo '<url>
+                <loc>' . $host . '/page/' . $url->alias . '</loc>
+                <changefreq>daily</changefreq>
+                <priority>0.5</priority>
+            </url>';
+        }
+        foreach ($article_list as $article){
+            echo '<url>
+                <loc>' . $host . '/' . $article->country->iso . '/' .$article->region->text. '/' . $article->en_title . '</loc>
+                <changefreq>daily</changefreq>
+                <priority>0.5</priority>
+            </url>';
+        }
+        echo '</urlset>';
+
+
+        Yii::$app->end();
     }
 
 }

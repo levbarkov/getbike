@@ -6,7 +6,7 @@ use yii\helpers\Html;
 $this->title = 'Final step';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-    <div class="content">
+    <noindex><div class="content">
         <div class="content__final">
             <div class="content__final__title">
                 <p data-order_id="<?=$order?>">Thank you, <?php echo $model;?>!</p>
@@ -26,9 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 <p>Booking<i class="icon icon-right-arrow"></i></p>
             </div>
         </div>
-    </div>
+    </div></noindex>
 <?php
 $script_index = <<< JS
+
+            gtag('event', 'conversion', { 'send_to': 'AW-795380455/UrMrCODY8YoBEOeVovsC', 'value': $price, 'currency': 'IDR' });
             window.onload = function (ev) { 
                     window.open('https://api.whatsapp.com/send?phone=79059766651');
              }

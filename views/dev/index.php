@@ -3,8 +3,8 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
-$this->title = 'Get Bike';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'GetBike.io | Rental service bike on Bali with free delivery';
+//$this->params['breadcrumbs'][] = $this->title;
 ?>
     <div class="content">
         <p class="step_title">Book a bike in 2 minutes! Free delivery to hotel or your villa.</p>
@@ -108,9 +108,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="content__nav__list__item"></div>
                 <div class="content__nav__list__item"></div>
             </div>
-            <div class="content__nav__button" onclick="$('#go_third').submit();">
-                <p>Choose bike<i class="icon icon-right-arrow"></i></p>
-            </div>
+            <noindex><div class="content__nav__button" onclick="$('#go_third').submit();">
+                    <p>Choose bike<i class="icon icon-right-arrow"></i></p>
+                </div></noindex>
         </div>
         <input type="hidden" name="bike_id" id="bike_id">
         <input type="hidden" name="condition_id" id="condition_id">
