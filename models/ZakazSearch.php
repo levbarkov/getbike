@@ -12,6 +12,10 @@ use app\models\Zakaz;
  */
 class ZakazSearch extends Zakaz
 {
+
+    public $filter_date_from;
+    public $filter_date_to;
+
     /**
      * @inheritdoc
      */
@@ -19,7 +23,7 @@ class ZakazSearch extends Zakaz
     {
         return [
             [['id', 'rental_id', 'garage_id', 'price', 'pay_id', 'region_id', 'service_tax', 'status'], 'integer'],
-            [['user_phone', 'zakaz_info', 'user_name', 'user_email', 'date_for', 'date_to', 'curr_date', 'comment', 'coord'], 'safe'],
+            [['user_phone', 'zakaz_info', 'user_name', 'user_email', 'date_for', 'date_to', 'curr_date', 'comment', 'coord', 'filter_date_to', 'filter_date_from'], 'safe'],
         ];
     }
 
@@ -65,7 +69,7 @@ class ZakazSearch extends Zakaz
             'garage_id' => $this->garage_id,
             'date_for' => $this->date_for,
             'date_to' => $this->date_to,
-            'curr_date' => $this->curr_date,
+            //'curr_date' => $this->curr_date,
             'price' => $this->price,
             'pay_id' => $this->pay_id,
             'region_id' => $this->region_id,
@@ -78,7 +82,9 @@ class ZakazSearch extends Zakaz
             ->andFilterWhere(['like', 'user_email', $this->user_email])
             ->andFilterWhere(['like', 'service_tax', $this->service_tax])
             ->andFilterWhere(['like', 'comment', $this->comment])
-            ->andFilterWhere(['like', 'coord', $this->coord]);
+            ->andFilterWhere(['like', 'coord', $this->coord])
+            ->andFilterWhere(['>=', 'curr_date', $this->filter_date_from ? $this->filter_date_from . ' 00:00:00' : ''])
+            ->andFilterWhere(['<=', 'curr_date', $this->filter_date_to ? $this->filter_date_to . ' 23:59:59' : '']);
             //->orderBy(['curr_date' => SORT_DESC]);
 
         return $dataProvider;

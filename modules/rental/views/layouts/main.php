@@ -83,7 +83,7 @@ $auth = Yii::$app->session->get('auth');
                 </div>
                 <div class="admin__menu__bottom">
                     <!--            <p><i class="icon icon-person"></i>Kriss<i class="icon icon-right-arrow"></i></p>-->
-                    <p><i class="icon icon-person"></i><?= Yii::$app->user->getIdentity()->name ?></p>
+                    <p style="max-width: 120px;"><i class="icon icon-person"></i><?= Yii::$app->user->getIdentity()->name ?></p>
                 </div>
             <?php } ?>
         </div>

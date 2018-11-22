@@ -13,6 +13,7 @@ class m180528_193026_add_coord_colum_to_rental extends Migration
     public function safeUp()
     {
         $this->addColumn('rental', 'coord', $this->string());
+        $this->addColumn('rental', 'balance', $this->integer()->defaultValue(0));
     }
 
     /**

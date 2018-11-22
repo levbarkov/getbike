@@ -12,6 +12,23 @@ function randomInteger(min, max) {
     rand = Math.round(rand);
     return rand;
 }
+function openPopUp(id) {
+    $.fancybox({
+        wrapCSS: 'openPopUp',
+        href: '#' + id,
+        padding: 0,
+        titleShow: false,
+        autoScale: true,
+        //closeBtn: false,
+        openEffect: 'fade',
+        helpers:{
+            overlay: {
+                closeClick: true,
+                locked: true
+            }
+        }
+    });
+}
 
 $(document).ready(function () {
 
@@ -34,6 +51,9 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('.fancybox').fancybox();
+
     $('[data-action=change_rental]').change(function () {
         //alert($(this).attr('data-sector'));
         var lead_id = $(this).attr('data-lead');
@@ -76,5 +96,23 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('body').on('submit', '.update_locale', function () {
+        var form = $(this);
+        $.ajax({
+            type: "POST",
+            url: "/admin/sourcemessage/updatelocale",
+            data: form.serialize(),
+            success: function (data) {
+                data = JSON.parse(data);
+                if (data.status == 'success') {
+                    Alerts(data.text, 'success', randomInteger());
+                } else {
+                    Alerts(data.text, 'warning', randomInteger());
+                }
+            }
+        });
+        return false;
+    })
 
 })

@@ -21,12 +21,18 @@ class Hmenu extends Widget
         if($pages){
             $i = 0;
             $links = [];
+            $alias = [];
             foreach ($pages as $page){
                 /* @var $page \app\models\Pages */
+                if(array_search($page->alias, $alias) !== false)
+                    continue;
+
+
                 if($page->page_menu && $page->alias){
                     $links[$i]['alias'] = $page->alias;
                     $links[$i]['title'] = $page->page_menu;
                 }
+                $alias[] =  $page->alias;
                 $i++;
             }
             if(!empty($links)){

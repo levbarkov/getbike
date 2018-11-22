@@ -28,6 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
+            'language',
             'title:ntext',
             'en_title:ntext',
             //'country_id',
@@ -59,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
                        }else{
                            return 'Country or region not selected';
                        }
-                       return Html::a($model->title,"/info/$country->iso/$region/$model->en_title");
+                       return Html::a($model->title,"/".$model->language."/info/$country->iso/$region/$model->en_title");
                    }
                    return 'Country or region not selected';
 

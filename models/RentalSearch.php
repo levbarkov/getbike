@@ -18,7 +18,7 @@ class RentalSearch extends Rental
     public function rules()
     {
         return [
-            [['id', 'radius', 'region_id'], 'integer'],
+            [['id', 'radius', 'region_id', 'balance'], 'integer'],
             [['phone', 'mail', 'adress', 'name', 'hash', 'coord'], 'safe'],
         ];
     }
@@ -62,6 +62,7 @@ class RentalSearch extends Rental
             'id' => $this->id,
             'radius' => $this->radius,
             'region_id' => $this->region_id,
+            'balance' => $this->balance,
         ]);
 
         $query->andFilterWhere(['like', 'phone', $this->phone])

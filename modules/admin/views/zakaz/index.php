@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use dosamigos\datepicker\DateRangePicker;
+use app\models\Zakaz;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ZakazSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -14,16 +16,27 @@ global $rental_list;
 
 $rental_list = \app\models\Rental::find()->select(['id', 'name'])->asArray()->all();
 $status_list = ['Оформлен', 'Доставлен', 'Оплачен', 'Отменён', 'Передан рентальщику'];
+
 ?>
 <div class="zakaz-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php Pjax::begin(); ?>
+    <?php Pjax::begin();
+
+    $summ = isset($_GET['ZakazSearch']["filter_date_from"]) && !empty($_GET['ZakazSearch']["filter_date_from"])
+        ? Zakaz::getTotal($dataProvider->models, 'price', true) : $summ;
+    $tax_summ = isset($_GET['ZakazSearch']["filter_date_from"]) && !empty($_GET['ZakazSearch']["filter_date_from"])
+        ? Zakaz::getTotal($dataProvider->models, 'service_tax', true) : $tax_summ;
+    ?>
+
+
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Zakaz', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Order', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+    <p>Summ: <b><?=$summ?> IDR</b>;
+        Tax summ: <b><?=$tax_summ?> IDR</b></p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -60,7 +73,29 @@ $status_list = ['Оформлен', 'Доставлен', 'Оплачен', 'О�
             //'garage_id',
             //'date_for',
             //'date_to',
-            'curr_date',
+            //'curr_date',
+            [
+                'attribute' => 'curr_date',
+                'options' => [
+                    'style' => 'width: 200px;',
+                ],
+                'content' => function ($model) {
+                    return $model->curr_date;
+                },
+                'filter' => DateRangePicker::widget([
+                    'model' => $searchModel,
+                    'attribute' => 'filter_date_from',
+                    'attributeTo' => 'filter_date_to',
+                    //'labelTo' => 'по',
+                    //'language' => 'ru',
+                    'clientOptions' => [
+                        'autoclose' => true,
+                        'todayBtn' => "linked",
+                        'clearBtn' => true,
+                        'format' => 'yyyy-mm-dd',
+                    ]
+                ])
+            ],
             'service_tax',
             //'pay_id',
             //'region_id',

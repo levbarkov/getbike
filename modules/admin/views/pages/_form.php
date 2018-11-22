@@ -11,6 +11,11 @@ use dosamigos\tinymce\TinyMce;
 if($model->page_css)
     echo "<style>$model->page_css</style>";
 
+if(Yii::$app->params['languages']){
+    foreach (Yii::$app->params['languages'] as $val){
+        $languages[$val] = $val;
+    }
+}
 ?>
 
 <div class="pages-form">
@@ -23,6 +28,11 @@ if($model->page_css)
         <div class="col-md-2">
             <?= $form->field($model, 'page_menu')->textInput(['maxlength' => true]) ?>
         </div>
+        <div class="col-md-1">
+            <?= $form->field($model, 'language')->dropDownList($languages) ?>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-4">
             <?= $form->field($model, 'page_title')->textarea(['rows' => 1]) ?>
         </div>

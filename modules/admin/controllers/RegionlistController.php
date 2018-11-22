@@ -96,6 +96,7 @@ class RegionlistController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $country_list = \yii\helpers\ArrayHelper::map(\app\models\CountryList::find()->asArray()->all(), 'id', 'text');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -103,6 +104,7 @@ class RegionlistController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'country_list' => $country_list
         ]);
     }
 

@@ -15,6 +15,7 @@ use Yii;
  * @property string $page_code
  * @property string $page_js
  * @property string $page_css
+ * @property string $language
  */
 class Pages extends \yii\db\ActiveRecord
 {
@@ -33,7 +34,7 @@ class Pages extends \yii\db\ActiveRecord
     {
         return [
             [['alias'], 'required'],
-            [['page_title', 'page_desc', 'page_code', 'page_js', 'page_css', 'page_menu'], 'string'],
+            [['page_title', 'page_desc', 'page_code', 'page_js', 'page_css', 'page_menu', 'language'], 'string'],
             [['alias'], 'string', 'max' => 255],
         ];
     }
@@ -46,6 +47,7 @@ class Pages extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'alias' => 'Alias',
+            'language' => 'Language',
             'page_title' => 'Page title',
             'page_menu' => 'Menu title',
             'page_desc' => 'Page Desc',

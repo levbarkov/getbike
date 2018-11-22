@@ -1,6 +1,7 @@
 <?php
 
 $params = require __DIR__ . '/params.php';
+$i18n_config = require __DIR__ . '/i18n.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
@@ -8,6 +9,8 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'layout' => 'getbike',
+    'defaultRoute' => 'dev/index',
+    'language' => 'en',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
@@ -20,6 +23,25 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'tuAuLhanidaJh8XAw_0AH-inDPcnH89Q',
         ],
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => 'yii\i18n\DbMessageSource',
+                    'sourceMessageTable'=>'{{%source_message}}',
+                    'messageTable'=>'{{%message}}',
+                    'enableCaching' => false,
+                    'cachingDuration' => 10,
+                    'forceTranslation'=>true,
+                    //'basePath' => '@app/messages',
+                    'sourceLanguage' => 'en',
+                 /*   'fileMap' => [
+                        'app' => 'app/app.php',
+                        'admin'       => 'admin/admin.php',
+                        'admin/operations' => 'admin/operations.php',
+                    ],*/
+                ],
+            ],
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -28,11 +50,16 @@ $config = [
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'dev/error',
         ],
         'urlManager' => [
+            'class' => 'app\components\CustomUrlManager',
+            'languages' => ['en','ru'],
             'enablePrettyUrl' => true,
+            'enableDefaultLanguageUrlCode' => true,
             'showScriptName' => false,
+            'enableStrictParsing' => false,
+            'ignoreLanguageUrlPatterns' => ['#^admin/#' => '#^admin/#'],
             'rules' => [
                 '/' => 'dev/index',
 /*              '/index' => 'site/index',
@@ -48,10 +75,15 @@ $config = [
                 'sitemap.xml' => 'dev/sitemap',
                 '/admin' => 'admin/zakaz/index',
                 '/admin/<action>' => 'admin/<action>',
+                '/admin/<controller>/<action>' => 'admin/<controller>/<action>',
                 '/rental/auth/<hash:\w+>' => 'rental/rental/auth',
                 '/rental/<action>' => 'rental/rental/<action>',
-                '/dev/<action>' => 'dev/<action>',
+//                '/dev/<action>' => 'dev/<action>',
+                '/site/<action>' => 'site/<action>',
                 '/info/<iso:[\w\-]+>/<region:[\w\-]+>/<title:[\w\-]+>' => 'dev/article',
+                '/<country:[\w\-]+>/<region:[\w\-]+>/<step:[\w\-]+>' => 'dev/booking',
+                //'/<country:[\w\-]+>/<region:[\w\-]+>/' => 'dev/booking',
+                '/<country:[\w\-]+>/<region:[\w\-]+>' => 'dev/booking',
                 '/index' => 'dev/index',
                 '/second' => 'dev/second',
                 '/third' => 'dev/third',
@@ -98,7 +130,7 @@ $config = [
             'layout' => 'main'
         ],
     ],
-    'params' => $params,
+    'params' => $params+$i18n_config,
 ];
 
 if (YII_ENV_DEV) {
@@ -114,7 +146,7 @@ if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['127.0.0.1', '91.228.64.18', '::1'],
     ];
 }
 

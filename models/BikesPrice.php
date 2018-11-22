@@ -16,6 +16,7 @@ use yii\web\UploadedFile;
  * @property string $price
  * @property string $pricepm
  * @property int $region_id
+ * @property int $cCheck
  *
  * @property Bikes $bike
  * @property Condition $condition
@@ -25,6 +26,7 @@ class BikesPrice extends \yii\db\ActiveRecord
 {
 
     public $imgFile;
+    public $cCheck;
 
     /**
      * @inheritdoc
@@ -47,7 +49,7 @@ class BikesPrice extends \yii\db\ActiveRecord
             [['condition_id'], 'exist', 'skipOnError' => true, 'targetClass' => Condition::className(), 'targetAttribute' => ['condition_id' => 'id']],
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => RegionList::className(), 'targetAttribute' => ['region_id' => 'id']],
             [['imgFile'], 'file', 'extensions' => 'png, jpg'],
-            [['imgFile'], 'safe'],
+            [['imgFile','cCheck'], 'safe'],
         ];
     }
 
@@ -64,6 +66,7 @@ class BikesPrice extends \yii\db\ActiveRecord
             'price' => 'Price',
             'pricepm' => 'Price per month',
             'region_id' => 'Region ID',
+            'cCheck' => 'Save',
         ];
     }
 
@@ -105,10 +108,23 @@ class BikesPrice extends \yii\db\ActiveRecord
                 $file->saveAs($dir . $fileName);
                 $this->photo = $fileName;
                 $this->updateAttributes(['photo']);
+            }else{
+                $bikes = BikesPrice::findAll(['bike_id' => $this->bike_id, 'condition_id' => $this->condition_id]);
+                foreach ($bikes as $bike){
+                    if($bike->photo && !empty($bike->photo)){
+                        $this->photo = $bike->photo;
+                        $this->updateAttributes(['photo']);
+                        break;
+                    }
+                }
             }
     }
     public function beforeDelete(){
         if (parent::beforeDelete()) {
+            $check_bike = BikesPrice::findAll(['condition_id' => $this->condition_id, 'bike_id' => $this->bike_id]);
+            if(count($check_bike) > 1){
+                return true;
+            }
             if($this->photo && file_exists(Yii::getAlias('@uploadBikePhoto/').$this->photo))
                 unlink(Yii::getAlias('@uploadBikePhoto/').$this->photo);
             return true;

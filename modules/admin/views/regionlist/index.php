@@ -9,6 +9,8 @@ use yii\grid\GridView;
 
 $this->title = 'Region Lists';
 $this->params['breadcrumbs'][] = $this->title;
+$country_list = \yii\helpers\ArrayHelper::map(\app\models\CountryList::find()->asArray()->all(), 'id', 'text');
+
 ?>
 <div class="region-list-index">
 
@@ -32,6 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="panel-body">
                     <?= $this->render('_form', [
                         'model' => $model,
+                        'country_list'=>$country_list,
                     ]) ?>
                 </div>
             </div>
@@ -44,8 +47,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             'text',
+            'alias',
+            [
+                    'attribute' => 'country_id',
+                    'format' => 'raw',
+                    'value' => function($model){
+                        return $model->country->text;
+                    },
+                    'filter' => $country_list,
+            ],
+            'coord',
+            'tag_line',
+            'adress',
+            'description',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

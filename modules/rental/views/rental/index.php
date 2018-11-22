@@ -21,7 +21,7 @@
                 <?php foreach ($garage as $val){ /* @var $val \app\models\RentalGarage */?>
                     <li <?=$val->status == 0 ? 'class="js-bike-inactive"' : ''?>>
                         <div class="admin__content__main__list__item">
-                            <p class="admin__content__main__list__item__link"><a href="/rental/edit?id=<?=$val->id?>"><?=$val->bike->model?></a></p>
+                            <p class="admin__content__main__list__item__link" style="max-width: 160px;"><a href="/rental/edit?id=<?=$val->id?>"><?=$val->bike->model?></a></p>
                             <p class="admin__content__main__list__item__plate"><?=$val->number?></p>
                             <input class="admin__content__main__list__item__button js-bike-availability" data-toggle="garage_status" data-garage_id="<?=$val->id?>" <?=$val->status == 0 ? 'checked' : ''?> type="checkbox"/>
                             <span class="admin__content__main__list__item__button__bg"></span>

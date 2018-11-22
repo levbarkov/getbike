@@ -21,6 +21,18 @@ AppAsset::register($this);
     <meta property="og:image" content="https://getbike.io/upload/img/og_image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <?php
+        $absolute_url = Yii::$app->request->getAbsoluteUrl();
+        $languages = Yii::$app->params['languages'];
+        $cur_lang = Yii::$app->language;
+        foreach ($languages as $val){
+                $l_list = implode('|',$languages);
+                $url = preg_replace('/'.$l_list.'/', $val, $absolute_url, -1);
+                echo $this->registerLinkTag(['rel' => 'alternate', 'hreflang' => $val, 'href' => $url]);
+        }
+    ?>
+
+
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
             w[l] = w[l] || [];
@@ -141,14 +153,14 @@ if ($this_url[0] == 'site/index' OR $this_url[0] == 'dev/second') {
         <div class="location_map__close js-close-location"><i></i></div>
         <div class="location_map__top">
             <div class="location_map__top__form">
-                <label for="address">Pickup and drop at</label>
+                <label for="address"><?=Yii::t('main', 'Pickup and drop at')?></label>
                 <input type="text" name="address" id="address" placeholder="Kuta, Bali">
             </div>
             <div class="location_map__top__buttons">
                 <div class="location_map__top__buttons__location" onClick="curLocation();"><i
                             class="icon icon-location"></i></div>
                 <div class="location_map__top__buttons__submit">
-                    <p>Confirm <i class="icon-right-arrow icon"></i></p>
+                    <p><?=Yii::t('main', 'Confirm')?> <i class="icon-right-arrow icon"></i></p>
                 </div>
             </div>
         </div>

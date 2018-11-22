@@ -1,19 +1,27 @@
 @font-face {
   font-family: "TBold";
   font-weight: bold;
-  src: url("../fonts/T/TStarProBold.otf"); }
+  src:
+          url('../fonts/tfonts/TSTARPRO-Bold.eot?w15ukt') format('embedded-opentype'),
+          url('../fonts/tfonts/TSTARPRO-Bold.ttf?w15ukt') format('truetype'),
+          url('../fonts/tfonts/TSTARPRO-Bold.woff?w15ukt') format('woff'); }
 
 @font-face {
   font-family: "TMedium";
   font-weight: bold;
-  src: url("../fonts/T/TStarProMedium.otf"); }
-
-@font-face {
-  font-family: "Icons";
-  font-weight: normal;
-  src: url("../fonts/icons/icomoon.eot"); }
+  src:
+          url('../fonts/tfonts/TSTARPRO-Medium.eot?w15ukt') format('embedded-opentype'),
+          url('../fonts/tfonts/TSTARPRO-Medium.ttf?w15ukt') format('truetype'),
+          url('../fonts/tfonts/TSTARPRO-Medium.woff?w15ukt') format('woff'); }
 
 @font-face {
   font-family: "TRegular";
   font-weight: normal;
-  src: url("../fonts/T/TStarProRegular.otf"); }
+  src:
+          url('../fonts/tfonts/TSTARPRO-Regular.eot?w15ukt') format('embedded-opentype'),
+          url('../fonts/tfonts/TSTARPRO-Regular.ttf?w15ukt') format('truetype'),
+  url('../fonts/tfonts/TSTARPRO-Regular.woff?w15ukt') format('woff');
+ }
+
+
+

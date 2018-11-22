@@ -18,8 +18,8 @@ class RegionListSearch extends RegionList
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['text'], 'safe'],
+            [['id', 'country_id'], 'integer'],
+            [['text', 'alias', 'coord','adress','tag_line', 'description'], 'safe'],
         ];
     }
 
@@ -60,9 +60,15 @@ class RegionListSearch extends RegionList
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'country_id' => $this->country_id,
         ]);
 
-        $query->andFilterWhere(['like', 'text', $this->text]);
+        $query->andFilterWhere(['like', 'text', $this->text])
+        ->andFilterWhere(['like', 'alias', $this->text])
+        ->andFilterWhere(['like', 'adress', $this->adress])
+        ->andFilterWhere(['like', 'tag_line', $this->tag_line])
+        ->andFilterWhere(['like', 'description', $this->description])
+        ->andFilterWhere(['like', 'coord', $this->coord]);
 
         return $dataProvider;
     }

@@ -9,11 +9,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="content">
         <div class="content__final">
             <div class="content__final__title">
-                <p data-order_id="">Sorry!</p>
+                <p data-order_id=""><?=Yii::t('main', 'Sorry!')?></p>
             </div>
             <div class="content__final__description">
-                <p>Unfortunately in the location you have chosen there are no bikes, choose another location.</p>
-                    <p><a href="/">Try with a new location.</a></p>
+                <p><?=Yii::t('main', 'Unfortunately in the location you have chosen there are no bikes, choose another location.')?></p>
+                    <p><a href="/"><?=Yii::t('main', 'Try with a new location.')?></a></p>
             </div>
         </div>
         <div class="content__nav" style="display: none">

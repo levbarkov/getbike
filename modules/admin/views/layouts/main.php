@@ -41,6 +41,8 @@ AppAsset::register($this);
                     'url' => '/admin/rental'],
                     ['label' => 'Rental Garages',
                     'url' => '/admin/rentalgarage'],
+                    ['label' => 'Rental operations',
+                    'url' => '/admin/operations'],
             ]],
             ['label' => 'Bikes', 'items' => [
                     ['label' => 'Bikes',
@@ -50,7 +52,14 @@ AppAsset::register($this);
                     ['label' => 'Condition',
                         'url' => '/admin/condition'],
             ]],
-            ['label' => 'Regions', 'url' => ['/admin/regionlist']],
+            ['label' => 'GEO', 'items' => [
+                    ['label' => 'Regions',
+                        'url' => '/admin/regionlist'],
+                    ['label' => 'Countrys',
+                        'url' => '/admin/countrylist'],
+
+            ]],
+
             ['label' => 'Pages', 'url' => ['/admin/pages']],
             ['label' => 'Article',  'items' => [
                 [
@@ -60,6 +69,16 @@ AppAsset::register($this);
                 [
                     'label' => 'Country and regions',
                     'url' => ['/admin/country/index']
+                ],
+            ]],
+            ['label' => 'Locale',  'items' => [
+                [
+                    'label' => 'Messages',
+                    'url' => ['/admin/sourcemessage/index']
+                ],
+                [
+                    'label' => 'Locale',
+                    'url' => ['/admin/message/index']
                 ],
             ]],
 

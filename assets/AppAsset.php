@@ -24,6 +24,7 @@ class AppAsset extends AssetBundle
         'https://fonts.googleapis.com/css?family=Rubik',
         'front/css/jquery-ui.min.css',
         'front/css/normalize.css',
+        'front/css/fonts.css',
         'front/css/main.css',
         'front/css/icons.css',
         'front/css/custom.css',

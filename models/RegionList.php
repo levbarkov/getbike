@@ -9,8 +9,15 @@ use Yii;
  *
  * @property int $id
  * @property string $text
+ * @property string $alias
+ * @property string $coord
+ * @property string $tag_line
+ * @property string $adress
+ * @property string $description
+ * @property int $country_id
  *
  * @property BikesPrice[] $bikesPrices
+ * @property CountryList $country
  * @property Rental[] $rentals
  * @property RentalGarage[] $rentalGarages
  * @property Zakaz[] $zakazs
@@ -31,7 +38,11 @@ class RegionList extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['text'], 'string', 'max' => 255],
+            [['country_id'], 'integer'],
+            [['tag_line','adress','description'], 'string'],
+            [['text','alias','coord'], 'string', 'max' => 255],
+            [['alias', 'text'], 'required'],
+            [['country_id'], 'exist', 'skipOnError' => true, 'targetClass' => CountryList::className(), 'targetAttribute' => ['country_id' => 'id']],
         ];
     }
 
@@ -41,8 +52,9 @@ class RegionList extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'text' => 'Text',
+            'id' => Yii::t('admin', 'ID'),
+            'text' => Yii::t('admin', 'Text'),
+            'country_id' => Yii::t('admin', 'Country ID'),
         ];
     }
 
@@ -52,6 +64,14 @@ class RegionList extends \yii\db\ActiveRecord
     public function getBikesPrices()
     {
         return $this->hasMany(BikesPrice::className(), ['region_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCountry()
+    {
+        return $this->hasOne(CountryList::className(), ['id' => 'country_id']);
     }
 
     /**

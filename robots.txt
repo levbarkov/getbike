@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /rental/
+Disallow: /admin/
+https://getbike.io/robots.txt 

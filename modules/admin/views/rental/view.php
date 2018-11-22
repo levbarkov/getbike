@@ -36,7 +36,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'hash',
             'region_id',
+            //'balance',
+            ['label' => 'Balance',
+                'value' => $model->balance . ' Rp']
         ],
     ]) ?>
 
+
+    <?= $this->context->renderPartial('/operations/ajax', [
+        'searchModel' => $searchModel,
+        'dataProvider' => $dataProvider,
+        'user_id' => $model->id
+    ])?>
 </div>

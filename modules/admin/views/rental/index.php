@@ -9,14 +9,15 @@ use yii\grid\GridView;
 
 $this->title = 'Rentals';
 $this->params['breadcrumbs'][] = $this->title;
+Yii::$app->language = 'ru-RU';
 ?>
 <div class="rental-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-<!--    <p>
-        <?/*= Html::a('Create Rental', ['create'], ['class' => 'btn btn-success']) */?>
+    <!--    <p>
+        <? /*= Html::a('Create Rental', ['create'], ['class' => 'btn btn-success']) */ ?>
     </p>
 -->
     <div class="panel-group" id="accordion">
@@ -60,7 +61,27 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::a('Auth Link', \yii\helpers\Url::to('/rental/auth/'.$model->hash));
                 }
             ],
-            //'region_id',
+            //'balance',
+            //'hash',
+            [
+                    'attribute' => 'region_id',
+                    'format' =>'raw',
+                    'value' => function($mdel){
+        return $mdel->region->text;
+                    }
+
+            ],
+
+            [
+                'attribute' => 'balance',
+                'format' => 'raw',
+                'value' => function($model){
+
+        $html = "<p><b>Operations:</b> " . count($model->operations) . "<br>";
+        $html.= "<b>Balance:</b> " . Html::a($model->balance, '/admin/operations/ajax?user_id='.$model->id.'&OperationsSearch%5Brental_id%5D='.$model->id, ['data-fancybox-type'=>'iframe','class'=>'fancybox']) . "</p>";
+        return $html;
+                }
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

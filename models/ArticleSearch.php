@@ -19,7 +19,7 @@ class ArticleSearch extends Article
     {
         return [
             [['id', 'country_id', 'region_id'], 'integer'],
-            [['title', 'en_title', 'text', 'page_title','page_desc'], 'safe'],
+            [['title', 'en_title', 'text', 'page_title','page_desc', 'language'], 'safe'],
         ];
     }
 
@@ -63,6 +63,7 @@ class ArticleSearch extends Article
             'en_title' => $this->en_title,
             'country_id' => $this->country_id,
             'region_id' => $this->region_id,
+            'language' => $this->language
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])

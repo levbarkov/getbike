@@ -19,7 +19,7 @@ class PagesSearch extends Pages
     {
         return [
             [['id'], 'integer'],
-            [['alias', 'page_title', 'page_desc', 'page_code', 'page_js', 'page_css', 'page_menu'], 'safe'],
+            [['alias', 'language', 'page_title', 'page_desc', 'page_code', 'page_js', 'page_css', 'page_menu'], 'safe'],
         ];
     }
 
@@ -60,6 +60,7 @@ class PagesSearch extends Pages
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'language' => $this->language,
         ]);
 
         $query->andFilterWhere(['like', 'alias', $this->alias])

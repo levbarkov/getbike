@@ -45,7 +45,10 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div id="collapseTwo" class="panel-collapse collapse">
                 <div class="panel-body">
-                    <?= $this->render('_form', [
+                    <?/*= $this->render('_form', [
+                        'model' => $model,
+                        'data' => $data,
+                    ])*/ ?>    <?= $this->render('mass', [
                         'model' => $model,
                         'data' => $data,
                     ]) ?>                </div>

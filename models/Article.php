@@ -15,6 +15,7 @@ use Yii;
  * @property string $page_desc
  * @property string $en_title
  * @property string $text
+ * @property string $language
  *
  * @property Country $country
  * @property Regions $region
@@ -37,7 +38,7 @@ class Article extends \yii\db\ActiveRecord
         return [
             [['country_id', 'region_id'], 'integer'],
             [['title', 'en_title', 'text'], 'required'],
-            [['title', 'en_title', 'text'], 'string'],
+            [['title', 'en_title', 'text', 'language'], 'string'],
             [['page_title', 'page_desc'], 'string', 'max' => 255],
             [['country_id'], 'exist', 'skipOnError' => true, 'targetClass' => Country::className(), 'targetAttribute' => ['country_id' => 'id']],
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => Regions::className(), 'targetAttribute' => ['region_id' => 'id']],
@@ -51,6 +52,7 @@ class Article extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'language' => 'Language',
             'country_id' => 'Country ID',
             'region_id' => 'Region ID',
             'title' => 'Title',

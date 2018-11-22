@@ -28,12 +28,12 @@ class Bikesform extends Widget
 
         foreach ($rentals as $rental) {
             /* @var $rental Rental */
-            $r_radius = $rental['radius'];
+           /* $r_radius = $rental['radius'];
             $r_coord = explode('|', $rental['coord']);
             $u_radius = PseudoCrypt::latlng2distance($u_coord[0], $u_coord[1], $r_coord[0], $r_coord[1]);
-            if ($u_radius <= $r_radius) {
+            if ($u_radius <= $r_radius) {*/
                 $rent_idsp[] = $rental['id'];
-            }
+            /*}*/
         }
 
         if (isset($rent_idsp) && is_array($rent_idsp)) {

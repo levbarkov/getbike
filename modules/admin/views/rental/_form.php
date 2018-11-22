@@ -10,7 +10,10 @@ use yii\widgets\ActiveForm;
 
     <div class="rental-form">
 
-        <?php $form = ActiveForm::begin(); ?>
+        <?php $form = ActiveForm::begin(['action' => '/admin/rental/create']); ?>
+        <div class="form-group">
+            <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        </div>
         <div class="row">
             <div class="col-md-3">
                 <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
@@ -37,15 +40,17 @@ use yii\widgets\ActiveForm;
 
         <div class="row">
             <div class="col-md-12">
+                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#open_map">
+                    Open map
+                </button>
+
+                <div id="open_map" class="collapse">
+                    <div id="map" style="height: 500px"></div>
+                </div>
                 <?= $form->field($model, 'coord')->hiddenInput()->label('') ?>
-                <div id="map" style="height: 500px"></div>
             </div>
         </div>
         <? //= $form->field($model, 'hash')->textInput(['maxlength' => true]) ?>
-
-        <div class="form-group">
-            <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-        </div>
 
         <?php ActiveForm::end(); ?>
 

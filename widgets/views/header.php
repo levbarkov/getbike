@@ -13,7 +13,7 @@
     <!-- Меню -->
     <ul>
         <?php foreach ($links as $link){ ?>
-            <li><a href="/page/<?=$link['alias']?>"><?=$link['title']?></a></li>
+            <li style="line-height: 20px;"><a href="/<?=Yii::$app->language?>/page/<?=$link['alias']?>"><?=Yii::t('main', $link['title'])?></a></li>
         <?php }?>
     </ul>
 </div>
@@ -36,7 +36,7 @@
     <div class="header__nav">
         <?php foreach ($links as $link){ ?>
             <div class="header__nav__item">
-                <a href="/page/<?=$link['alias']?>"><?=$link['title']?></a>
+                <a href="/<?=Yii::$app->language?>/page/<?=$link['alias']?>"><?=Yii::t('main', $link['title'])?></a>
             </div>
         <?php }?>
         <div class="header__nav__item hidden">
@@ -52,6 +52,14 @@
             <a href="">Terms</a>
         </div>
     </div>
+    <?= \app\widgets\MultiLanguageWidget::widget([
+        'addCurrentLang' => false, // add current lang
+        'calling_controller' => $this->context,
+        'image_type'  => 'rounded', // classic or rounded
+        'link_home'   => false, // true or false
+        'widget_type' => 'classic', // classic or selector
+        'width'       => '23'
+    ]); ?>
     <div class="header__auth hidden">
         <div class="header__auth__reg">
             <a href="">Register</a>

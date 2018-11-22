@@ -8,6 +8,11 @@ use yii\web\JsExpression;
 /* @var $this yii\web\View */
 /* @var $model app\models\Article */
 /* @var $form yii\widgets\ActiveForm */
+if(Yii::$app->params['languages']){
+    foreach (Yii::$app->params['languages'] as $val){
+        $languages[$val] = $val;
+    }
+}
 ?>
 <script>
     window.onload = function () {
@@ -43,7 +48,10 @@ use yii\web\JsExpression;
         </div>
         <div class="col-md-6">    <?= $form->field($model, 'en_title')->textInput() ?>
         </div>
-        <div class="col-md-6">    <?= $form->field($model, 'page_title')->textInput() ?>
+        <div class="col-md-1">
+            <?= $form->field($model, 'language')->dropDownList($languages) ?>
+        </div>
+        <div class="col-md-5">    <?= $form->field($model, 'page_title')->textInput() ?>
         </div>
         <div class="col-md-6">    <?= $form->field($model, 'page_desc')->textInput() ?>
         </div>

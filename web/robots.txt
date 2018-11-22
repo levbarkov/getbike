@@ -1,2 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /rental/
+Disallow: /admin/
+Host: getbike.io
+Host: www.getbike.io

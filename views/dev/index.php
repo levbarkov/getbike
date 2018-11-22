@@ -3,13 +3,33 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
-$this->title = 'GetBike.io | Rental service bike on Bali with free delivery';
+
+
+$this->title = 'GetBike.io | '.Yii::t('main', 'Rental service bike on Bali with free delivery');
 //$this->params['breadcrumbs'][] = $this->title;
+
+$base_url = Yii::$app->session->get('base_url');
+if(!$base_url && empty($base_url)){
+    $base_url = '/'.Yii::$app->language;
+}
+
 ?>
+    <?php if(Yii::$app->language == 'ru'){ ?>
+        <style>
+            .content__second__list__item__mileage__item p{
+                text-align: center;
+                line-height: 1;
+            }
+        </style>
+    <?php } ?>
     <div class="content">
-        <p class="step_title">Book a bike in 2 minutes! Free delivery to hotel or your villa.</p>
-        <p class="step_title step_font">STEP 1 OF 3</p>
-		<form action='/second' name='go_third' id='go_third' method='post'>
+        <?php if(Yii::$app->session->get('vietnam')) { ?>
+                <p class="step_title "><?=Yii::t('main', Yii::$app->session->get('vietnam'))?></p>
+        <?php }else{ ?>
+        <p class="step_title "><?=Yii::t('main', 'Book a bike in 2 minutes! Free delivery to hotel or your villa.')?></p>
+        <?php } ?>
+        <p class="step_title step_font"><?=Yii::t('main', 'STEP {0} OF {1}', [1,3])?></p>
+		<form action='<?=$base_url?>/second' name='go_third' id='go_third' method='post'>
 		<input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
         <div class="content__second">
             <div class="content__second__list">
@@ -32,42 +52,42 @@ $this->title = 'GetBike.io | Rental service bike on Bali with free delivery';
 					<div id="bike_<?php echo $key; ?>condition_<?php echo $key1; ?>" condition="<?php echo $key1; ?>" <?php echo $style; ?>>	
 					<input type="hidden" id="img_bike_<?php echo $key; ?>condition_<?php echo $key1; ?>" value="<?php echo Yii::getAlias('@uploadBikePhotoWeb/') .  $value1['bikeprice']['photo']; ?>">
                     <div class="content__second__list__item__title">
-                        <p><?php echo $value1['bike']['model'];?></p>
+                        <p style="    text-align: left;"><?php echo $value1['bike']['model'];?></p>
                     </div>
                     <div class="content__second__list__item__price">
-                        <p><span><?php echo number_format($value1['bikeprice']['price']);?> IDR</span> / day</p>
+                        <p><span><?php echo number_format($value1['bikeprice']['price']);?> <?=Yii::$app->session->get('currency') ? Yii::$app->session->get('currency') : 'IDR'?></span> / <?=Yii::t('main', 'day')?></p>
                     </div>
                         <?php if(isset($value1['bikeprice']['pricepm']) && !empty($value1['bikeprice']['pricepm'])){?>
                     <div class="content__second__list__item__price">
-                        <p><span><?php echo number_format($value1['bikeprice']['pricepm']);?> IDR</span> / month</p>
+                        <p><span><?php echo number_format($value1['bikeprice']['pricepm']);?> <?=Yii::$app->session->get('currency') ? Yii::$app->session->get('currency') : 'IDR'?></span> / <?=Yii::t('main', 'month')?></p>
                     </div>
                                 <?php }?>
                     <div class="content__second__list__item__mileage">
 						<?php if (isset($model[$key][1])){?>
                         <div onclick="show_hide('bike_<?php echo $key; ?>condition_1', '<?php echo $key; ?>')" class="content__second__list__item__mileage__item<?php if ($value1['condition_id']==1){ echo " content__second__list__item__mileage__item--active"; } ?>">
-                            <p>New bike</p>
+                            <p><?=Yii::t('main', 'New bike')?></p>
                         </div>
                         <?php
 					    }
 					    if (isset($model[$key][2])){
                         ?>
                         <div onclick="show_hide('bike_<?php echo $key; ?>condition_2', '<?php echo $key; ?>')" class="content__second__list__item__mileage__item<?php if ($value1['condition_id']==2){ echo " content__second__list__item__mileage__item--active"; } ?>">
-                            <p>Low mileage</p>
+                            <p><?=Yii::t('main', 'Low mileage')?></p>
                         </div>
                         <?php
 					    }
 					    if (isset($model[$key][3])){
                         ?>
                         <div onclick="show_hide('bike_<?php echo $key; ?>condition_3', '<?php echo $key; ?>')" class="content__second__list__item__mileage__item<?php if ($value1['condition_id']==3){ echo " content__second__list__item__mileage__item--active"; } ?>">
-                            <p>Big mileage</p>
+                            <p><?=Yii::t('main', 'Big mileage')?></p>
                         </div>
                         <?php
 					    }
                         ?>
                     </div>
                     <div class="content__second__list__item__helmets">
-                        <p class="content__second__list__item__helmets__title">Helmets</p>
-                        <p class="content__second__list__item__helmets__description">Your scooter or motorbike will be delivered with<br> either 1 or 2 clean and sanitized helmets.</p>
+                        <p class="content__second__list__item__helmets__title"><?=Yii::t('main', 'Helmets')?></p>
+                        <p class="content__second__list__item__helmets__description"><?=Yii::t('main', 'Your scooter or motorbike will be delivered with')?><br> <?=Yii::t('main', 'either 1 or 2 clean and sanitized helmets.')?></p>
                         <div class="content__second__list__item__helmets__list">
                             <div id="helmet1_bike_<?php echo $key; ?>condition_<?php echo $key1; ?>" helmet="1" onclick="helmet_select('helmet1_bike_<?php echo $key; ?>condition_<?php echo $key1; ?>', 'helmet2_bike_<?php echo $key; ?>condition_<?php echo $key1; ?>')" class="content__second__list__item__helmets__list__item content__second__list__item__helmets__list__item--active">
                                 <p>1</p>
@@ -109,7 +129,7 @@ $this->title = 'GetBike.io | Rental service bike on Bali with free delivery';
                 <div class="content__nav__list__item"></div>
             </div>
             <noindex><div class="content__nav__button" onclick="$('#go_third').submit();">
-                    <p>Choose bike<i class="icon icon-right-arrow"></i></p>
+                    <p><?=Yii::t('main', 'Choose bike')?><i class="icon icon-right-arrow"></i></p>
                 </div></noindex>
         </div>
         <input type="hidden" name="bike_id" id="bike_id">

@@ -10,7 +10,8 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\RegionList;
 use yii\helpers\ArrayHelper;
-
+use app\models\Operations;
+use app\models\OperationsSearch;
 /**
  * RentalController implements the CRUD actions for Rental model.
  */
@@ -42,14 +43,14 @@ class RentalController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $data['region_list'] = ArrayHelper::map(RegionList::find()->asArray()->all(), 'id', 'text');
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+/*        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 Yii::$app->session->setFlash('success', "Rental save success");
                 return $this->redirect(['index']);
             }else{
                 Yii::$app->session->setFlash('error', "Rental save error");
             }
-        }
+        }*/
 
 
         return $this->render('index', [
@@ -68,8 +69,15 @@ class RentalController extends Controller
      */
     public function actionView($id)
     {
+
+        $searchModel = new OperationsSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams + ['OperationsSearch' => ['=', 'rental_id' => $id]]);
+
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -84,7 +92,7 @@ class RentalController extends Controller
         $data['region_list'] = ArrayHelper::map(RegionList::find()->asArray()->all(), 'id', 'text');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['update', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -106,13 +114,18 @@ class RentalController extends Controller
         $model = $this->findModel($id);
         $data['region_list'] = ArrayHelper::map(RegionList::find()->asArray()->all(), 'id', 'text');
 
+        $searchModel = new OperationsSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams + ['OperationsSearch' => ['=', 'rental_id' => $id]]);
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['update', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
-            'data' => $data
+            'data' => $data,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
